@@ -1,0 +1,485 @@
+<VirtualHost 85.10.203.24:443>
+ ServerName web6.order.hoststar.ch
+ DocumentRoot /home/www/web6/html
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web6/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName web6.order.hoststar.ch
+ ServerAlias orderdesk.hoststar.at www.orderdesk.hoststar.at www.payback.hoststar.at
+ DocumentRoot /home/www/web6/html
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+<VirtualHost 85.10.203.24:443>
+ ServerName delete.hoststar.at
+ ServerAlias www.delete.hoststar.at
+ DocumentRoot /home/www/web6/html/mydelete
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web6/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName delete.hoststar.at
+ ServerAlias www.delete.hoststar.at
+ DocumentRoot /home/www/web6/html/mydelete
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+#<VirtualHost 85.10.203.24:80>
+# ServerName payback.hoststar.at
+# DocumentRoot /home/www/web6/html/payback
+#  #SuexecUserGroup web6 web6
+# ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+# php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+# php_admin_value file_uploads 1
+# php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+#
+# php_admin_flag register_globals on
+# php_admin_flag magic_quotes_gpc on
+# php_admin_flag safe_mode off
+# php_admin_value safe_mode_exec_dir /home/www/empty/
+# php_admin_flag allow_call_time_pass_reference on
+# php_admin_value memory_limit 64M
+# php_admin_value upload_max_filesize 8M
+# php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+# php_admin_value session.save_path /home/www/web6/phptmp
+# php_admin_value max_execution_time 300
+#
+# <Directory /home/www/web6/html>
+#  Options +FollowSymLinks +SymLinksIfOwnerMatch
+# </Directory>
+#</VirtualHost>
+<VirtualHost 85.10.203.24:443>
+ ServerName my.hoststar.at
+ ServerAlias www.my.hoststar.at
+ DocumentRoot /home/www/web6/html/myhoststar
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web6/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName my.hoststar.at
+ ServerAlias www.my.hoststar.at
+ DocumentRoot /home/www/web6/html/myhoststar
+  #SuexecUserGroup web6 web6
+ ScriptAlias /cgi-bin/ /home/www/web6/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web6/html/:/home/www/web6/phptmp/:/home/www/web6/files/:/home/www/web6/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web6/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web6/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web6/phptmp
+ php_admin_value max_execution_time 300
+
+ <Directory /home/www/web6/html>
+  Options +FollowSymLinks +SymLinksIfOwnerMatch
+ </Directory>
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ DocumentRoot /home/www/web4/html
+ ServerName newsletter.fraubrunnen.com
+ ServerAlias www.newsletter.fraubrunnen.com web4.order.hoststar.ch news.fraubrunnen.com www.news.fraubrunnen.com
+ ServerAdmin support@hoststar.ch
+ <Directory /home/www/web4/html>
+  AllowOverride None
+  Order allow,deny
+  Allow from all
+ </Directory>
+#  User web4
+#  Group web4
+ #SuexecUserGroup web4 web4
+ ScriptAlias /cgi-bin/ /home/www/web4/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web4/html/:/home/www/web4/phptmp/:/home/www/web4/files/:/home/www/web4/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web4/phptmp/
+
+ php_admin_flag register_globals off
+ php_admin_flag safe_mode off
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 32M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web4/:/usr/bin
+ php_admin_value session.save_path /home/www/web4/phptmp
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName orderdesk.hoststar.ch
+ ServerAlias www.orderdesk.hoststar.ch web1.order.hoststar.ch www.delete.hoststar.ch  \
+  www.shop.hoststar.ch www.payback.hoststar.ch my.hoststarcenter.ch www.my.hoststarcenter.ch
+ DocumentRoot /home/www/web1/html
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:443>
+ ServerName web1.order.hoststar.ch
+ DocumentRoot /home/www/web1/html
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web1/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:443>
+ ServerName my.hoststar.ch
+ ServerAlias www.my.hoststar.ch
+ DocumentRoot /home/www/web1/html/myhoststar
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web1/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName my.hoststar.ch
+ ServerAlias www.my.hoststar.ch
+ DocumentRoot /home/www/web1/html/myhoststar
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName delete.hoststar.ch
+ DocumentRoot /home/www/web1/html/mydelete
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName shop.hoststar.ch
+ DocumentRoot /home/www/web1/html/demoshop/catalog_new
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName my.loginserver.ch
+ ServerAlias www.my.loginserver.ch
+ DocumentRoot /home/www/web1/html/myreseller
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+
+ php_admin_flag register_globals on
+ php_admin_flag magic_quotes_gpc on
+ php_admin_flag safe_mode off
+ php_admin_value safe_mode_exec_dir /home/www/empty/
+ php_admin_flag allow_call_time_pass_reference on
+ php_admin_value memory_limit 64M
+ php_admin_value upload_max_filesize 8M
+ php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+ php_admin_value session.save_path /home/www/web1/phptmp
+ php_admin_value max_execution_time 300
+</VirtualHost>
+#<VirtualHost 85.10.203.24:80>
+# ServerName payback.hoststar.ch
+# DocumentRoot /home/www/web1/html/payback
+#  #SuexecUserGroup web1 web1
+# ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+# php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+# php_admin_value file_uploads 1
+# php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+#
+# php_admin_flag register_globals on
+# php_admin_flag magic_quotes_gpc on
+# php_admin_flag safe_mode off
+# php_admin_value safe_mode_exec_dir /home/www/empty/
+# php_admin_flag allow_call_time_pass_reference on
+# php_admin_value memory_limit 64M
+# php_admin_value upload_max_filesize 8M
+# php_admin_value open_basedir /home/www/web1/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+# php_admin_value session.save_path /home/www/web1/phptmp
+# php_admin_value max_execution_time 300
+#</VirtualHost>
+<VirtualHost 85.10.203.24:443>
+ ServerName domaintransfer.hoststar.ch
+ ServerAlias www.domaintransfer.hoststar.ch
+ DocumentRoot /home/www/web1/html/myhoststar/de/domaintransfer
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+ <IfModule mod_ssl.c>
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl.key/admin.key
+  SSLCertificateFile /etc/apache2/ssl.crt/admin.crt
+  SetEnvIf User-Agent ".*MSIE.*" \
+  nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /etc/apache2/ssl.crt/ca-admin.crt
+  <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+   SSLOptions +StdEnvVars
+  </Files>
+  <Directory "/home/www/web1/html/cgi-bin">
+   SSLOptions +StdEnvVars
+  </Directory>
+ </IfModule>
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName domaintransfer.hoststar.ch
+ ServerAlias www.domaintransfer.hoststar.ch
+ DocumentRoot /home/www/web1/html/myhoststar/de/domaintransfer
+  #SuexecUserGroup web1 web1
+ ScriptAlias /cgi-bin/ /home/www/web1/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web1/html/:/home/www/web1/phptmp/:/home/www/web1/files/:/home/www/web1/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web1/phptmp/
+</VirtualHost>
+<VirtualHost 85.10.203.24:80>
+ ServerName ebook.fraubrunnen.com
+ ServerAlias www.ebook.fraubrunnen.com web5.order.hoststar.ch
+ DocumentRoot /home/www/web5/html
+  #SuexecUserGroup web5 web5
+ ScriptAlias /cgi-bin/ /home/www/web5/html/cgi-bin/
+ php_admin_value open_basedir /home/www/web5/html/:/home/www/web5/phptmp/:/home/www/web5/files/:/home/www/web5/atd/
+ php_admin_value file_uploads 1
+ php_admin_value upload_tmp_dir /home/www/web5/phptmp/
+</VirtualHost>

@@ -1,0 +1,80 @@
+################### CONFIXX APACHE VHOSTS FILE ##########################
+# created at Time::tm=ARRAY(0x1d30830)
+#
+#            !!! Do not make any changes in this file !!!
+#
+# 1. We cannot guarantee that the software will work properly, if
+# the contents of this file are modified.
+# 2. This file would be rewritten each time the Confixx software requires
+# to update Apache configuration to bring user/domain settings in effect.
+#
+# If you need to have some custom content in this file, you can use
+# "httpd special" function in the Confixx Control Panel or create
+# an empty webX.lock file and edit webX.conf by the way you want in this
+# case Confixx will not touch the configuration file.
+#
+##########################################################################
+
+<Directory "/home/www/web2/html">
+  Options -FollowSymLinks -SymLinksIfOwnerMatch
+  php_admin_flag engine on
+</Directory>
+
+<VirtualHost 85.10.203.24:80>
+  ServerName testplattform.ch
+  ServerAlias www.testplattform.ch web2.order.hoststar.ch 
+  DocumentRoot /home/www/web2/html
+  User web2
+  Group web2
+  ScriptAlias /cgi-bin/ /home/www/web2/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web2/html/:/home/www/web2/phptmp/:/home/www/web2/files/:/home/www/web2/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web2/phptmp/
+
+php_admin_flag register_globals on
+php_admin_flag magic_quotes_gpc on
+php_admin_flag safe_mode off
+php_admin_flag allow_call_time_pass_reference on
+php_admin_value memory_limit 64M
+php_admin_value upload_max_filesize 8M
+php_admin_value open_basedir /home/www/web2/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+php_admin_value session.save_path /home/www/web2/phptmp
+php_admin_value max_execution_time 300
+</VirtualHost>
+
+<VirtualHost 85.10.203.24:443>
+  ServerName web2.order.hoststar.ch
+  DocumentRoot /home/www/web2/html
+  User web2
+  Group web2
+  ScriptAlias /cgi-bin/ /home/www/web2/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web2/html/:/home/www/web2/phptmp/:/home/www/web2/files/:/home/www/web2/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web2/phptmp/
+  <IfModule mod_ssl.c>
+    SSLEngine on
+    SSLCertificateKeyFile /usr/local/apache/conf/ssl.key/admin.key
+    SSLCertificateFile /usr/local/apache/conf/ssl.crt/admin.crt
+    SetEnvIf User-Agent ".*MSIE.*" \
+      nokeepalive ssl-unclean-shutdown \
+      downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /usr/local/apache/conf/ssl.crt/ca-admin.crt
+    <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+      SSLOptions +StdEnvVars
+    </Files>
+    <Directory "/home/www/web2/html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+
+php_admin_flag register_globals on
+php_admin_flag magic_quotes_gpc on
+php_admin_flag safe_mode off
+php_admin_flag allow_call_time_pass_reference on
+php_admin_value memory_limit 64M
+php_admin_value upload_max_filesize 8M
+php_admin_value open_basedir /home/www/web2/:/usr/bin:/usr/local/saferpay:/home/www/empty:/tmp
+php_admin_value session.save_path /home/www/web2/phptmp
+php_admin_value max_execution_time 300
+</VirtualHost>
+

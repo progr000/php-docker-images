@@ -1,0 +1,2488 @@
+---
+categories:
+  other:
+    default_status: 1
+    description: default category
+    group_count: 1
+    group_active_list:
+      unknown: 0
+    groupe_inactive_list: {}
+    status: 1
+  Global:
+    group_count: 14
+    group_inactive_list:
+      Incoming: 0
+      Outgoing: 0
+    group_active_list:
+      Initialization: 0
+      Protocol1: 0
+      Request: 0
+      HTTP: 0
+      Agents: 0
+      Domains: 0
+      Generic: 0
+      SQLi: 0
+      XSS: 0
+      Other: 0
+      Exceptions: 0
+      CVE: 0
+    default_status: 1
+    description: Global Category
+    status: 1
+groups:
+  unknown:
+    default_status: 1
+    description: default group
+    rule_count: 17
+    category: other
+    rule_inactive_list: {}
+    rule_active_list:
+      210210: 0
+      210220: 0
+      210230: 0
+      210240: 0
+      210260: 0
+      210270: 0
+      210280: 0
+      210290: 0
+      210300: 0
+      210330: 0
+      210340: 0
+      210350: 0
+      210380: 0
+      210390: 0
+      210400: 0
+      210410: 0
+      210420: 0
+    status: 1
+  Initialization:
+    rule_count: 5
+    rule_inactive_list: {}
+    rule_active_list:
+      210050: 0
+      210060: 0
+      210070: 0
+      210080: 0
+      210090: 0
+    category: Global
+    default_status: 1
+    description: ! '''Initialization of internal variables'''
+    status: 1
+  Protocol1:
+    rule_count: 0
+    rule_inactive_list: {}
+    rule_active_list: {}
+    category: Global
+    default_status: 1
+    description: ! '''Detecting protocol violations'''
+    status: 1
+  Request:
+    rule_count: 6
+    rule_inactive_list: {}
+    rule_active_list:
+      210600: 0
+      210610: 0
+      210620: 0
+      210630: 0
+      210640: 0
+      210650: 0
+    category: Global
+    default_status: 1
+    description: ! '''Checking request'''
+    status: 1
+  HTTP:
+    rule_count: 5
+    rule_inactive_list: {}
+    rule_active_list:
+      210700: 0
+      210710: 0
+      210720: 0
+      210730: 0
+      210740: 0
+    category: Global
+    default_status: 1
+    description: ! '''Checking HTTP limitations'''
+    status: 1
+  Agents:
+    rule_count: 4
+    rule_inactive_list: {}
+    rule_active_list:
+      210800: 0
+      210810: 0
+      210820: 0
+      210830: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detecting bots and scanners'''
+    status: 1
+  Domains:
+    rule_count: 4
+    rule_inactive_list: {}
+    rule_active_list:
+      210900: 0
+      210910: 0
+      210920: 0
+      210930: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detecting malicious domains'''
+    status: 1
+  Generic:
+    rule_count: 21
+    rule_inactive_list: {}
+    rule_active_list:
+      211000: 0
+      211020: 0
+      211030: 0
+      211040: 0
+      211050: 0
+      211070: 0
+      211080: 0
+      211090: 0
+      211110: 0
+      211120: 0
+      211140: 0
+      211150: 0
+      211160: 0
+      211170: 0
+      211180: 0
+      211190: 0
+      211200: 0
+      211210: 0
+      211220: 0
+      211230: 0
+      211240: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detecting general vulnerabilities'''
+    status: 1
+  SQLi:
+    rule_count: 16
+    rule_inactive_list: {}
+    rule_active_list:
+      211540: 0
+      211570: 0
+      211580: 0
+      211630: 0
+      211650: 0
+      211680: 0
+      211690: 0
+      211700: 0
+      211710: 0
+      211720: 0
+      211740: 0
+      211750: 0
+      211760: 0
+      211780: 0
+      211790: 0
+      211820: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detecting SQL injection'''
+    status: 1
+  XSS:
+    rule_count: 99
+    rule_inactive_list: {}
+    rule_active_list:
+      212000: 0
+      212010: 0
+      212030: 0
+      212040: 0
+      212050: 0
+      212060: 0
+      212070: 0
+      212080: 0
+      212090: 0
+      212100: 0
+      212110: 0
+      212120: 0
+      212130: 0
+      212140: 0
+      212150: 0
+      212160: 0
+      212170: 0
+      212180: 0
+      212190: 0
+      212200: 0
+      212210: 0
+      212220: 0
+      212230: 0
+      212240: 0
+      212250: 0
+      212260: 0
+      212270: 0
+      212280: 0
+      212290: 0
+      212300: 0
+      212310: 0
+      212320: 0
+      212330: 0
+      212340: 0
+      212360: 0
+      212370: 0
+      212380: 0
+      212390: 0
+      212400: 0
+      212410: 0
+      212420: 0
+      212430: 0
+      212440: 0
+      212450: 0
+      212460: 0
+      212470: 0
+      212500: 0
+      212510: 0
+      212520: 0
+      212530: 0
+      212540: 0
+      212550: 0
+      212560: 0
+      212570: 0
+      212580: 0
+      212590: 0
+      212600: 0
+      212610: 0
+      212620: 0
+      212630: 0
+      212640: 0
+      212650: 0
+      212660: 0
+      212670: 0
+      212690: 0
+      212700: 0
+      212710: 0
+      212740: 0
+      212750: 0
+      212770: 0
+      212790: 0
+      212800: 0
+      212810: 0
+      212820: 0
+      212830: 0
+      212840: 0
+      212850: 0
+      212860: 0
+      212870: 0
+      212880: 0
+      212890: 0
+      212900: 0
+      212910: 0
+      212920: 0
+      212930: 0
+      212940: 0
+      212950: 0
+      212960: 0
+      212970: 0
+      212980: 0
+      212990: 0
+      213000: 0
+      213010: 0
+      213020: 0
+      213070: 0
+      213090: 0
+      213100: 0
+      213110: 0
+      213120: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detecting Cross Site Scripting vulnerabilities'''
+    status: 1
+  Other:
+    rule_count: 3
+    rule_inactive_list: {}
+    rule_active_list:
+      214100: 0
+      214110: 0
+      214120: 0
+    category: Global
+    default_status: 1
+    description: ! '''Various checks without group'''
+    status: 1
+  Exceptions:
+    rule_count: 3
+    rule_inactive_list: {}
+    rule_active_list:
+      214200: 0
+      214210: 0
+      214220: 0
+    category: Global
+    default_status: 1
+    description: ! '''Processing exceptions'''
+    status: 1
+  Incoming:
+    rule_count: 2
+    rule_inactive_list: {}
+    rule_active_list:
+      214300: 0
+      214310: 0
+    category: Global
+    default_status: 0
+    description: ! '''Checking incoming points'''
+    status: 1
+  Outgoing:
+    rule_count: 34
+    rule_inactive_list: {}
+    rule_active_list:
+      214400: 0
+      214410: 0
+      214420: 0
+      214430: 0
+      214440: 0
+      214450: 0
+      214460: 0
+      214470: 0
+      214490: 0
+      214500: 0
+      214510: 0
+      214520: 0
+      214530: 0
+      214540: 0
+      214550: 0
+      214560: 0
+      214570: 0
+      214580: 0
+      214590: 0
+      214600: 0
+      214610: 0
+      214620: 0
+      214630: 0
+      214640: 0
+      214650: 0
+      214660: 0
+      214670: 0
+      214680: 0
+      214800: 0
+      214900: 0
+      214910: 0
+      214920: 0
+      214930: 0
+      214940: 0
+    category: Global
+    default_status: 0
+    description: ! '''Checking outgoing points'''
+    status: 1
+  CVE:
+    rule_count: 113
+    rule_inactive_list: {}
+    rule_active_list:
+      219900: 0
+      219901: 0
+      219902: 0
+      219903: 0
+      220000: 0
+      220010: 0
+      220020: 0
+      220030: 0
+      220040: 0
+      220041: 0
+      220042: 0
+      220050: 0
+      220051: 0
+      220052: 0
+      220060: 0
+      220070: 0
+      220080: 0
+      220090: 0
+      220100: 0
+      220110: 0
+      220111: 0
+      220120: 0
+      220121: 0
+      220130: 0
+      220140: 0
+      220150: 0
+      220160: 0
+      220170: 0
+      220180: 0
+      220181: 0
+      220182: 0
+      220190: 0
+      220191: 0
+      220192: 0
+      220200: 0
+      220210: 0
+      220211: 0
+      220212: 0
+      220220: 0
+      220230: 0
+      220240: 0
+      220250: 0
+      220260: 0
+      220270: 0
+      220280: 0
+      220290: 0
+      220291: 0
+      220292: 0
+      220300: 0
+      220310: 0
+      220320: 0
+      220321: 0
+      220322: 0
+      220330: 0
+      220340: 0
+      220350: 0
+      220360: 0
+      220370: 0
+      220380: 0
+      220381: 0
+      220382: 0
+      220390: 0
+      220400: 0
+      220410: 0
+      220420: 0
+      220430: 0
+      220440: 0
+      220450: 0
+      220460: 0
+      220461: 0
+      220470: 0
+      220480: 0
+      220481: 0
+      220482: 0
+      220490: 0
+      220500: 0
+      220501: 0
+      220502: 0
+      220512: 0
+      220520: 0
+      220530: 0
+      220540: 0
+      220541: 0
+      220550: 0
+      220560: 0
+      220570: 0
+      220580: 0
+      220590: 0
+      220600: 0
+      220610: 0
+      220620: 0
+      220630: 0
+      220640: 0
+      220641: 0
+      220642: 0
+      220643: 0
+      220644: 0
+      220645: 0
+      220650: 0
+      220660: 0
+      220670: 0
+      220680: 0
+      220681: 0
+      220690: 0
+      220700: 0
+      220710: 0
+      220711: 0
+      220720: 0
+      220730: 0
+      220731: 0
+      220740: 0
+      220750: 0
+      220751: 0
+    category: Global
+    default_status: 1
+    description: ! '''Detection by Common Vulnerabilities and Exposures List'''
+    status: 1
+rules:
+  210050:
+    default_status: 1
+    description: ''
+    group: Initialization
+    file: categories.conf
+    status: 1
+  210060:
+    default_status: 1
+    description: ''
+    group: Initialization
+    file: categories.conf
+    status: 1
+  210070:
+    default_status: 1
+    description: ''
+    group: Initialization
+    file: categories.conf
+    status: 1
+  210080:
+    default_status: 1
+    description: ''
+    group: Initialization
+    file: categories.conf
+    status: 1
+  210090:
+    default_status: 1
+    description: ''
+    group: Initialization
+    file: categories.conf
+    status: 1
+  210210:
+    default_status: 1
+    description: ! '''COMODO WAF: Apache Error: Invalid URI in Request.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210220:
+    default_status: 1
+    description: ! '''COMODO WAF: Attempted multipart/form-data bypass'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210230:
+    default_status: 1
+    description: ! '''COMODO WAF: Failed to parse request body.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210240:
+    default_status: 1
+    description: ! '''COMODO WAF: Multipart request body failed strict validation'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210260:
+    default_status: 1
+    description: ! '''COMODO WAF: Content-Length HTTP header is not numeric.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210270:
+    default_status: 1
+    description: ! '''COMODO WAF: GET or HEAD Request with Body Content.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210280:
+    default_status: 1
+    description: ! '''COMODO WAF: POST request missing Content-Length Header.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210290:
+    default_status: 1
+    description: ! '''COMODO WAF: Invalid Use of Identity Encoding.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210300:
+    default_status: 1
+    description: ! '''COMODO WAF: Expect Header Not Allowed for HTTP 1.0.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210330:
+    default_status: 1
+    description: ! '''COMODO WAF: Range: Invalid Last Byte Value.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210340:
+    default_status: 1
+    description: ! '''COMODO WAF: Range: Too many fields'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210350:
+    default_status: 1
+    description: ! '''COMODO WAF: Multiple/Conflicting Connection Header Data Found.'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210380:
+    default_status: 1
+    description: ! '''COMODO WAF: URL Encoding Abuse Attack Attempt'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210390:
+    default_status: 1
+    description: ! '''COMODO WAF: UTF8 Encoding Abuse Attack Attempt'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210400:
+    default_status: 1
+    description: ! '''COMODO WAF: Unicode Full/Half Width Abuse Attack Attempt'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210410:
+    default_status: 1
+    description: ! '''COMODO WAF: Invalid character in request'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210420:
+    default_status: 1
+    description: ! '''COMODO WAF: Invalid character in request'''
+    group: unknown
+    file: categories.conf
+    status: 1
+  210600:
+    default_status: 1
+    description: ! '''COMODO WAF: Argument name too long'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210610:
+    default_status: 1
+    description: ! '''COMODO WAF: Argument value too long'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210620:
+    default_status: 1
+    description: ! '''COMODO WAF: Too many arguments in request'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210630:
+    default_status: 1
+    description: ! '''COMODO WAF: Total arguments size exceeded'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210640:
+    default_status: 1
+    description: ! '''COMODO WAF: Uploaded file size too large'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210650:
+    default_status: 1
+    description: ! '''COMODO WAF: Total uploaded files size too large'''
+    group: Request
+    file: categories.conf
+    status: 1
+  210700:
+    default_status: 1
+    description: ! '''COMODO WAF: Method is not allowed by policy'''
+    group: HTTP
+    file: categories.conf
+    status: 1
+  210710:
+    default_status: 1
+    description: ! '''COMODO WAF: Request content type is not allowed by policy'''
+    group: HTTP
+    file: categories.conf
+    status: 1
+  210720:
+    default_status: 1
+    description: ! '''COMODO WAF: HTTP protocol version is not allowed by policy'''
+    group: HTTP
+    file: categories.conf
+    status: 1
+  210730:
+    default_status: 1
+    description: ! '''COMODO WAF: URL file extension is restricted by policy'''
+    group: HTTP
+    file: categories.conf
+    status: 1
+  210740:
+    default_status: 1
+    description: ! '''COMODO WAF: HTTP header is restricted by policy'''
+    group: HTTP
+    file: categories.conf
+    status: 1
+  210800:
+    default_status: 1
+    description: ! '''COMODO WAF: Request Indicates a Security Scanner Scanned the
+      Site'''
+    group: Agents
+    file: categories.conf
+    status: 1
+  210810:
+    default_status: 1
+    description: ! '''COMODO WAF: Request Indicates a Security Scanner Scanned the
+      Site'''
+    group: Agents
+    file: categories.conf
+    status: 1
+  210820:
+    default_status: 1
+    description: ! '''COMODO WAF: Request Indicates a Security Scanner Scanned the
+      Site'''
+    group: Agents
+    file: categories.conf
+    status: 1
+  210830:
+    default_status: 1
+    description: ! '''COMODO WAF: Rogue web site crawler'''
+    group: Agents
+    file: categories.conf
+    status: 1
+  210900:
+    default_status: 1
+    description: ''
+    group: Domains
+    file: categories.conf
+    status: 1
+  210910:
+    default_status: 1
+    description: ''
+    group: Domains
+    file: categories.conf
+    status: 1
+  210920:
+    default_status: 1
+    description: ! '''COMODO WAF: Malicious site name found in request'''
+    group: Domains
+    file: categories.conf
+    status: 1
+  210930:
+    default_status: 1
+    description: ! '''COMODO WAF: Malicious site name found in body'''
+    group: Domains
+    file: categories.conf
+    status: 1
+  211000:
+    default_status: 1
+    description: ! '''COMODO WAF: System Command Injection'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211020:
+    default_status: 1
+    description: ! '''COMODO WAF: Injection of Undocumented ColdFusion Tags'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211030:
+    default_status: 1
+    description: ! '''COMODO WAF: LDAP Injection Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211040:
+    default_status: 1
+    description: ! '''COMODO WAF: SSI injection Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211050:
+    default_status: 1
+    description: ! '''COMODO WAF: Universal PDF XSS URL Detected.'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211070:
+    default_status: 1
+    description: ! '''COMODO WAF: HTTP Request Smuggling Attack.'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211080:
+    default_status: 1
+    description: ! '''COMODO WAF: HTTP Response Splitting Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211090:
+    default_status: 1
+    description: ! '''COMODO WAF: HTTP Response Splitting Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211110:
+    default_status: 1
+    description: ! '''COMODO WAF: Remote File Inclusion Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211120:
+    default_status: 1
+    description: ! '''COMODO WAF: Remote File Inclusion Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211140:
+    default_status: 1
+    description: ''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211150:
+    default_status: 1
+    description: ''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211160:
+    default_status: 1
+    description: ! '''COMODO WAF: Session Fixation Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211170:
+    default_status: 1
+    description: ! '''COMODO WAF: Session Fixation'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211180:
+    default_status: 1
+    description: ! '''COMODO WAF: Session Fixation'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211190:
+    default_status: 1
+    description: ! '''COMODO WAF: Remote File Access Attempt'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211200:
+    default_status: 1
+    description: ! '''COMODO WAF: System Command Access'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211210:
+    default_status: 1
+    description: ! '''COMODO WAF: System Command Injection'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211220:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP Injection Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211230:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP Injection Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211240:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP Injection Attack'''
+    group: Generic
+    file: categories.conf
+    status: 1
+  211540:
+    default_status: 1
+    description: ! '''COMODO WAF: Blind SQL Injection Attack'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211570:
+    default_status: 1
+    description: ! '''COMODO WAF: SQL Injection Attack'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211580:
+    default_status: 1
+    description: ! '''COMODO WAF: SQL Injection Attack'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211630:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects blind sqli tests using sleep() or benchmark().'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211650:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects MSSQL code execution and information gathering
+      attempts'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211680:
+    default_status: 1
+    description: ! '''COMODO WAF: Looking for integer overflow attacks'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211690:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects SQL benchmark and sleep injection attempts
+      including conditional queries'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211700:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects conditional SQL injection attempts'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211710:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects MySQL charset switch and MSSQL DoS attempts'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211720:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects MATCH AGAINST'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211740:
+    default_status: 1
+    description: ! '''COMODO WAF: Looking for basic sql injection. Common attack string
+      for mysql'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211750:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects Postgres pg_sleep injection'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211760:
+    default_status: 1
+    description: ! '''COMODO WAF: Finds basic MongoDB SQL injection attempts'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211780:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects chained SQL injection attempts 2/2'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211790:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects MySQL and PostgreSQL stored procedure/function
+      injections'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  211820:
+    default_status: 1
+    description: ! '''COMODO WAF: Detects MySQL UDF injection and other data/structure
+      manipulation attempts'''
+    group: SQLi
+    file: categories.conf
+    status: 1
+  212000:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Filter - Category 1: Script Tag Vector'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212010:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Filter - Category 2: Event Handler Vector'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212030:
+    default_status: 1
+    description: ''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212040:
+    default_status: 1
+    description: ''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212050:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212060:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212070:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212080:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212090:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212100:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212110:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212120:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212130:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212140:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212150:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212160:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212170:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212180:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212190:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212200:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212210:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212220:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212230:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212240:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212250:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212260:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212270:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212280:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212290:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212300:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212310:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212320:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212330:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212340:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212360:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212370:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212380:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212390:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212400:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212410:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212420:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212430:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212440:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212450:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212460:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212470:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212500:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212510:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212520:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212530:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212540:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212550:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212560:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212570:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212580:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212590:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212600:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212610:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212620:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212630:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212640:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212650:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212660:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212670:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212690:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212700:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212710:
+    default_status: 1
+    description: ! '''COMODO WAF: Cross-site Scripting (XSS) Attack'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212740:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212750:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212770:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212790:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212800:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212810:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212820:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212830:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212840:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212850:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212860:
+    default_status: 1
+    description: ! '''COMODO WAF: XSS Attack Detected'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212870:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212880:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212890:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212900:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212910:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212920:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212930:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212940:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212950:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212960:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212970:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212980:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  212990:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213000:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213010:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213020:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213070:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213090:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213100:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213110:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  213120:
+    default_status: 1
+    description: ! '''COMODO WAF: IE XSS Filters - Attack Detected.'''
+    group: XSS
+    file: categories.conf
+    status: 1
+  214100:
+    default_status: 1
+    description: ! '''COMODO WAF: Backdoor access'''
+    group: Other
+    file: categories.conf
+    status: 1
+  214110:
+    default_status: 1
+    description: ! '''COMODO WAF: Backdoor access'''
+    group: Other
+    file: categories.conf
+    status: 1
+  214120:
+    default_status: 1
+    description: ! '''COMODO WAF: Backdoor access'''
+    group: Other
+    file: categories.conf
+    status: 1
+  214200:
+    default_status: 1
+    description: ''
+    group: Exceptions
+    file: categories.conf
+    status: 1
+  214210:
+    default_status: 1
+    description: ''
+    group: Exceptions
+    file: categories.conf
+    status: 1
+  214220:
+    default_status: 1
+    description: ''
+    group: Exceptions
+    file: categories.conf
+    status: 1
+  214300:
+    default_status: 1
+    description: ! '''COMODO WAF: Inbound Attack Targeting OSVDB Flagged Resource.'''
+    group: Incoming
+    file: categories.conf
+    status: 1
+  214310:
+    default_status: 1
+    description: ! '''COMODO WAF: Inbound Points Exceeded'''
+    group: Incoming
+    file: categories.conf
+    status: 1
+  214400:
+    default_status: 1
+    description: ! '''COMODO WAF: Zope Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214410:
+    default_status: 1
+    description: ! '''COMODO WAF: Cold Fusion Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214420:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214430:
+    default_status: 1
+    description: ! '''COMODO WAF: ISA server existence revealed'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214440:
+    default_status: 1
+    description: ! '''COMODO WAF: Microsoft Office document properties leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214450:
+    default_status: 1
+    description: ! '''COMODO WAF: ASP/JSP source code leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214460:
+    default_status: 1
+    description: ! '''COMODO WAF: Cold Fusion source code leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214470:
+    default_status: 1
+    description: ! '''COMODO WAF: IIS installed in default location'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214490:
+    default_status: 1
+    description: ! '''COMODO WAF: The application is not available'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214500:
+    default_status: 1
+    description: ! '''COMODO WAF: WebLogic information disclosure'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214510:
+    default_status: 1
+    description: ! '''COMODO WAF: File or Directory Names Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214520:
+    default_status: 1
+    description: ''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214530:
+    default_status: 1
+    description: ! '''COMODO WAF: Possibly malicious iframe tag in output'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214540:
+    default_status: 1
+    description: ! '''COMODO WAF: Possibly malicious iframe tag in output'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214550:
+    default_status: 1
+    description: ! '''COMODO WAF: Malicious iframe+javascript tag in output'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214560:
+    default_status: 1
+    description: ! '''COMODO WAF: Potential Obfuscated Javascript in Output - Excessive
+      fromCharCode'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214570:
+    default_status: 1
+    description: ! '''COMODO WAF: Potential Obfuscated Javascript in Output - Eval+Unescape'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214580:
+    default_status: 1
+    description: ! '''COMODO WAF: Potential Obfuscated Javascript in Output - Unescape'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214590:
+    default_status: 1
+    description: ! '''COMODO WAF: Potential Obfuscated Javascript in Output - Heap
+      Spray'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214600:
+    default_status: 1
+    description: ''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214610:
+    default_status: 1
+    description: ! '''COMODO WAF: ASP/JSP source code leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214620:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP source code leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214630:
+    default_status: 1
+    description: ! '''COMODO WAF: PHP source code leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214640:
+    default_status: 1
+    description: ! '''COMODO WAF: Statistics Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214650:
+    default_status: 1
+    description: ! '''COMODO WAF: SQL Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214660:
+    default_status: 1
+    description: ! '''COMODO WAF: IIS Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214670:
+    default_status: 1
+    description: ! '''COMODO WAF: IIS Information Leakage'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214680:
+    default_status: 1
+    description: ! '''COMODO WAF: Directory Listing'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214800:
+    default_status: 1
+    description: ! '''COMODO WAF: Outbound Points Exceeded'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214900:
+    default_status: 1
+    description: ! '''COMODO WAF: Correlated Successful Attack Identified'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214910:
+    default_status: 1
+    description: ! '''COMODO WAF: Correlated Attack Attempt Identified'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214920:
+    default_status: 1
+    description: ! '''COMODO WAF: Inbound Points'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214930:
+    default_status: 1
+    description: ! '''COMODO WAF: Inbound Points Exceeded'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  214940:
+    default_status: 1
+    description: ! '''COMODO WAF: Outbound Points Exceeded'''
+    group: Outgoing
+    file: categories.conf
+    status: 1
+  219900:
+    default_status: 1
+    description: ! '''COMODO WAF: start track phpsession'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  219901:
+    default_status: 1
+    description: ! '''COMODO WAF: start track session'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  219902:
+    default_status: 1
+    description: ! '''COMODO WAF: start track session'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  219903:
+    default_status: 1
+    description: ! '''COMODO WAF: start track MoodleSession'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220000:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2007-1286 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220010:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2008-2898 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220020:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2012-0021 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220030:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2012-1823 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220040:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220041:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-0156 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220042:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-0156 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220050:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220051:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-0333 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220052:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-0333 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220060:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3515 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220070:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4949 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220080:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4951 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220090:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4998 / CVE-2013-4999 / CVE-2013-5000
+      attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220100:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5003 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220110:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4948 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220111:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4948 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220120:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4950 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220121:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-4950 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220130:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3299 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220140:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-2209 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220150:
+    default_status: 1
+    description: ! '''COMODO WAF: found sql injection attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220160:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5121 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220170:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5317 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220180:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220181:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220182:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-5316 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220190:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220191:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220192:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2012-6518 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220200:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5917 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220210:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220211:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220212:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3479 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220220:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5589 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220230:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-5091 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220240:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-5576 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220250:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5963 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220260:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3720 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220270:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3721 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220280:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5962 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220290:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220291:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220292:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-5977 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220300:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3524 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220310:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-6164 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220320:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220321:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220322:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-6797 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220330:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3530 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220340:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3531 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220350:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-6873 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220360:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-6267 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220370:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3526 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220380:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220381:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220382:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-7233 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220390:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-7187 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220400:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-7002 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220410:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2012-6621 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220420:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1206 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220430:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1683 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220440:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1610 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220450:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1619 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220460:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-0793 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220461:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-0793 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220470:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-0794 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220480:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220481:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220482:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-0010 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220490:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-1852 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220500:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220501:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2012-6628 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220502:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2012-6628 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220512:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-1466 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220520:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3933 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220530:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-3639 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220540:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1914 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220541:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1914 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220550:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-7319 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220560:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-7326 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220570:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-5983 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220580:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1403 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220590:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1401 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220600:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1459 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220610:
+    default_status: 1
+    description: ! '''COMODO WAF: CVE-2012-6622'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220620:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5963'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220630:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1879 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220640:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220641:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220642:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1915 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220643:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220644:
+    default_status: 1
+    description: ''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220645:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2014-1915 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220650:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2014-1907 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220660:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-1759 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220670:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-3478 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220680:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5953 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220681:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2013-5953 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220690:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE 2013-7334 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220700:
+    default_status: 1
+    description: ! '''COMODO WAF: Found CVE-2014-1945'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220710:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE: 2014-2089, 2014-2090, 2014-2088 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220711:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE: 2014-2089, 2014-2090, 2014-2088 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220720:
+    default_status: 1
+    description: ! '''COMODO WAF: Blocking CVE-2013-1409 XSS attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220730:
+    default_status: 1
+    description: ! '''COMODO WAF: Found CVE-2013-5952 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220731:
+    default_status: 1
+    description: ! '''COMODO WAF: Found CVE-2013-5952 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220740:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2014-2219 attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220750:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2014-2091 Cross-site scripting (XSS) attack'''
+    group: CVE
+    file: categories.conf
+    status: 1
+  220751:
+    default_status: 1
+    description: ! '''COMODO WAF: found CVE-2014-2091 Cross-site scripting (XSS) attack'''
+    group: CVE
+    file: categories.conf
+    status: 1

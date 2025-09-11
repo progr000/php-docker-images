@@ -1,0 +1,18 @@
+<Directory "/home/www/web5/html">
+  Options -FollowSymLinks -SymLinksIfOwnerMatch
+  php_admin_flag engine on
+  <IfModule mod_access.c>
+    Allow from all
+  </IfModule>
+</Directory>
+
+<VirtualHost 85.10.203.14:80>
+  ServerName ebook.fraubrunnen.com
+  ServerAlias www.ebook.fraubrunnen.com web5.order.hoststar.ch 
+  DocumentRoot /home/www/web5/html
+  ScriptAlias /cgi-bin/ /home/www/web5/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web5/html/:/home/www/web5/phptmp/:/home/www/web5/files/:/home/www/web5/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web5/phptmp/
+</VirtualHost>
+
