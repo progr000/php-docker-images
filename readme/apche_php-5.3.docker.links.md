@@ -19,3 +19,8 @@ php extensions
 - https://libssh2.org/ ; https://pecl.php.net/package/ssh2 
 - https://www.php.net/manual/en/ssh2.installation.php
 - https://wiki.centos-webpanel.com/install-ssh2-php-extension
+
+
+```shell
+docker builder prune
+```

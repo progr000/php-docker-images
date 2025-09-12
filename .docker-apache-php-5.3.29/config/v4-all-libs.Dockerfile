@@ -8,11 +8,11 @@ FROM debian:jessie
 #ENV OPENSSL_VERSION=1.0.2d
 ENV PHP_INI_DIR=/etc/php5/apache2
 
-#7
+#2,3
 COPY bin/* /usr/local/bin/
 COPY src/* /tmp/
 
-#9
+#4
 RUN <<EOF
   echo "deb [trusted=yes] http://archive.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list
   echo "deb-src [trusted=yes] http://archive.debian.org/debian jessie main non-free contrib" >> /etc/apt/sources.list
@@ -28,7 +28,7 @@ EOF
 #nano \
 #mc \
 
-#10
+#5
 RUN echo "Installing all necessary packages" \
     && apt-get update && apt-get install -y --no-install-recommends --fix-missing \
         ca-certificates \
@@ -47,7 +47,7 @@ RUN echo "Installing all necessary packages" \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-#11
+#6
 RUN echo "Prepare environment for apache and php" \
     && rm -rf /var/www/html  \
     && mkdir -p /var/lock/apache2 \
@@ -71,10 +71,10 @@ RUN echo "Prepare environment for apache and php" \
     && a2enmod mpm_prefork \
     && mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
 
-#12
+#7
 COPY apache2.conf /etc/apache2/apache2.conf
 
-#13
+#8
 # Compiling openssl, otherwise --with-openssl won't work
 RUN set -x \
     && echo "Compiling openssl" \
@@ -84,7 +84,7 @@ RUN set -x \
     && cd /usr/src/openssl \
     && ./config -fPIC && make && make install && make clean
 
-#14
+#9
 # Compiling php
 RUN set -x \
     && echo "Compiling php" \
@@ -106,7 +106,7 @@ RUN set -x \
 # --with-openssl - required for another extensions
 # --with-zlib  - required for another extensions
 
-# 15
+# 10
 # Prepare ssh2 extention for php
 RUN set -x \
     && echo "Prepare ssh2 extention for php" \
@@ -114,7 +114,7 @@ RUN set -x \
     && tar -xof /tmp/ssh2-0.12.tgz -C /usr/src/php/ext/ssh2 --strip-components=1
 # && echo "extension=ssh2.so" > $PHP_INI_DIR/conf.d/ssh2.ini
 
-#16
+#11
 # Installing extensions
 RUN echo "Installing dev packages for extensions and extensions which we need" \
     && apt-get update \
@@ -161,19 +161,19 @@ RUN echo "Installing dev packages for extensions and extensions which we need" \
 #   -- oci8 odbc pdo_odbc pdo_oci sybase_ct (at the moment failed with compiling)
 #   -- standard reflection spl # don't need to compiling and install (installed by default)
 
-# 17
+# 12
 RUN echo "Creating preferences for php.ini" \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/manual-php-ext-charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/manual-php-ext-tz.ini \
     && echo "Info" \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
-#18
+#13
 WORKDIR /var/www/html
 
-#19
+#14
 USER www-data
 
-#20
+#15
 EXPOSE 80
 CMD ["apache2-foreground"]

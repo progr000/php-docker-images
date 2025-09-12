@@ -13,4 +13,4 @@ services:
       - ${APACHE_INTERNAL_HTTPS_PORT}:443
     volumes:
       - ./../app:/var/www
-      - ./config/apache2-foreground:/usr/local/bin/apache2-foreground:rw
+      #- ./config/bin/apache2-foreground:/usr/local/bin/apache2-foreground:rw

@@ -8,11 +8,11 @@ FROM debian:jessie
 #ENV OPENSSL_VERSION=1.0.2d
 ENV PHP_INI_DIR=/etc/php5/apache2
 
-#7
+#2,3
 COPY bin/* /usr/local/bin/
 COPY src/* /tmp/
 
-#9
+#4
 RUN <<EOF
   echo "deb [trusted=yes] http://archive.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list
   echo "deb-src [trusted=yes] http://archive.debian.org/debian jessie main non-free contrib" >> /etc/apt/sources.list
@@ -28,7 +28,7 @@ EOF
 #nano \
 #mc \
 
-#10
+#5
 RUN echo "Installing all necessary packages" \
     && apt-get update && apt-get install -y --no-install-recommends --fix-missing \
         ca-certificates \
@@ -47,7 +47,7 @@ RUN echo "Installing all necessary packages" \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-#11
+#6
 RUN echo "Prepare environment for apache and php" \
     && rm -rf /var/www/html  \
     && mkdir -p /var/lock/apache2 \
@@ -71,10 +71,10 @@ RUN echo "Prepare environment for apache and php" \
     && a2enmod mpm_prefork \
     && mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
 
-#12
+#7
 COPY apache2.conf /etc/apache2/apache2.conf
 
-#13
+#8
 # Compiling openssl, otherwise --with-openssl won't work
 RUN set -x \
     && echo "Compiling openssl" \
@@ -84,7 +84,7 @@ RUN set -x \
     && cd /usr/src/openssl \
     && ./config -fPIC && make && make install && make clean
 
-#14
+#9
 # Compiling php
 RUN set -x \
     && echo "Compiling php" \
@@ -106,7 +106,7 @@ RUN set -x \
 # --with-openssl - required for another extensions
 # --with-zlib  - required for another extensions
 
-# 15
+# 10
 # Prepare ssh2 extention for php
 RUN set -x \
     && echo "Prepare ssh2 extention for php" \
@@ -114,66 +114,56 @@ RUN set -x \
     && tar -xof /tmp/ssh2-0.12.tgz -C /usr/src/php/ext/ssh2 --strip-components=1
 # && echo "extension=ssh2.so" > $PHP_INI_DIR/conf.d/ssh2.ini
 
-#16
+#11
 # Installing extensions
 RUN echo "Installing dev packages for extensions and extensions which we need" \
     && apt-get update \
-    \
-    && apt-get install -y --no-install-recommends --fix-missing \
-      libbz2-dev libicu-dev libcurl4-openssl-dev libmcrypt-dev \
-      libpng-dev libjpeg-dev libgif-dev libxpm-dev libfreetype6-dev \
-      libssh2-1-dev \
-      libmysqlclient-dev libpq-dev libsqlite3-dev libxslt-dev \
-      libenchant-dev libgmp-dev  \
-      libc-client-dev libkrb5-dev \
-      firebird-dev \
-      libldb-dev libldap2-dev \
-      freetds-dev \
-      libpspell-dev \
-      libedit-dev libreadline-dev \
-      librecode-dev \
-      libtidy-dev \
-      libsnmp-dev \
-    \
-    && echo "Fix for freetype lib" \
+    && apt-get install -y --no-install-recommends --fix-missing libicu-dev \
+    && docker-php-ext-install intl \
+    && apt-get install -y --no-install-recommends --fix-missing libcurl4-openssl-dev \
+    && docker-php-ext-install curl \
+    && apt-get install -y --no-install-recommends --fix-missing libmcrypt-dev \
+    && docker-php-ext-install mcrypt \
+    && apt-get install -y --no-install-recommends --fix-missing libpng-dev libjpeg-dev libgif-dev libxpm-dev libfreetype6-dev \
+    && echo "Small fix for freetype, needed for php ./configure for correct installation gd lib" \
     && mkdir /usr/include/freetype2/freetype \
     && ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h \
-    && echo "Fix for gmp lib" \
-    && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
-    && echo "Fix for ldap lib" \
-    && ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so \
-    && echo "Fix for mssql lib" \
-    && ln -s /usr/lib/x86_64-linux-gnu/libsybdb.so /usr/lib/ \
-    \
     && docker-php-ext-configure gd --with-gd \
-                                   --with-freetype-dir=/usr/include/freetype2 \
-                                   --enable-gd-native-ttf \
-                                   --with-jpeg-dir=/usr \
-    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo \
-                              filter ftp gettext gmp hash iconv imap \
-                              interbase intl json ldap mbstring mcrypt mssql mysql mysqli pcntl  \
-                              pdo pdo_dblib pdo_firebird pdo_mysql pdo_pgsql pdo_sqlite  \
-                              pgsql phar posix pspell readline recode session shmop simplexml snmp soap  \
-                              sockets sqlite ssh2 sysvmsg sysvsem sysvshm tidy  \
-                              tokenizer wddx xml xmlreader xmlrpc xmlwriter xsl zip
+                                     --with-freetype-dir=/usr/include/freetype2 \
+                                     --enable-gd-native-ttf \
+                                     --with-jpeg-dir=/usr \
+    && docker-php-ext-install gd \
+    && apt-get install -y --no-install-recommends --fix-missing libssh2-1-dev \
+    && docker-php-ext-install ssh2 \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install pdo \
+    && apt-get install -y --no-install-recommends --fix-missing libmysqlclient-dev \
+    && docker-php-ext-install mysql mysqli pdo_mysql \
+    && apt-get install -y --no-install-recommends --fix-missing libsqlite3-dev \
+    && docker-php-ext-install sqlite pdo_sqlite \
+    && docker-php-ext-install soap \
+    && docker-php-ext-install sockets \
+    && apt-get install -y --no-install-recommends --fix-missing libxslt-dev \
+    && docker-php-ext-install xsl \
+    && docker-php-ext-install zip \
+    && apt-get install -y --no-install-recommends --fix-missing libbz2-dev \
+    && docker-php-ext-install bz2 \
+    && apt-get install -y --no-install-recommends --fix-missing libssl-dev \
+    && docker-php-ext-install ftp
 
-#   -- oci8 odbc pdo_odbc pdo_oci sybase_ct (at the moment failed with compiling)
-#   -- standard reflection spl # don't need to compiling and install (installed by default)
-
-# 17
+# 12
 RUN echo "Creating preferences for php.ini" \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/manual-php-ext-charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/manual-php-ext-tz.ini \
     && echo "Info" \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
-#18
+#13
 WORKDIR /var/www/html
 
-#19
+#14
 USER www-data
 
-#20
+#15
 EXPOSE 80
 CMD ["apache2-foreground"]
