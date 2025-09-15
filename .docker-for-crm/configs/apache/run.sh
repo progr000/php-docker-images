@@ -17,4 +17,8 @@ socat UNIX-LISTEN:/tmp/mysql.sock,fork,reuseaddr,unlink-early,user=www-data,grou
 #&& iptables -t nat -A POSTROUTING -d 10.5.0.5 -j MASQUERADE
 
 #exec /usr/sbin/apache2 -D FOREGROUND
-apache2ctl -DFOREGROUND
+#apache2ctl -DFOREGROUND
+
+rm -f /var/run/apache2/apache2.pid
+a2enmod rewrite
+exec apache2 -DFOREGROUND

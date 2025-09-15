@@ -61,3 +61,8 @@ docker login
 ```bash
 docker push your-username/my-image:latest
 ```
+
+
+```shell
+docker builder prune
+```

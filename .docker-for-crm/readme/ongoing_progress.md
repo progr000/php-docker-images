@@ -1,36 +1,3 @@
-#version: '3.3'
-
-networks:
-  crm_net:
-    driver: bridge
-    enable_ipv6: false
-    ipam:
-      config:
-        - subnet: 10.5.0.0/16
-          gateway: 10.5.0.1
-
-
-services:
-  ################################################
-  crm-test-apache:
-    build:
-      context: configs/apache/
-      dockerfile: Dockerfile
-      args:
-        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
-    container_name: crm-test-apache
-    restart: unless-stopped
-    ports:
-      - ${APACHE_EXTERNAL_HTTP_PORT}:80
-      - ${APACHE_EXTERNAL_HTTPS_PORT}:443
-    volumes:
-      - ./configs/php/php.ini:/usr/local/etc/php/php.ini
-      - ./../app:/home/www
-      - ./configs/apache/run.sh:/run.sh
-      #- ./configs/apache/conf:/etc/apache2
-    networks:
-      crm_net:
-        ipv4_address: 10.5.0.6
     # the problem is: a lot of scripts have hardcoded localhost connection to mysql, and we cannot change them all,
     # but mysql in another docker container, so I need somehow forward localhost:3306 to 10.5.0.5:3306
     # iptables -F -t nat
@@ -59,27 +26,4 @@ services:
     #  - net.ipv4.ip_forward=1
     #  - net.ipv4.conf.all.route_localnet=1
     #  - net.ipv6.conf.lo.disable_ipv6=1
-  ################################################
-  crm-test-mysql:
-    #image: mysql:8.0
-    image: mysql/mysql-server:5.7
-    container_name: crm-test-mysql
-    restart: unless-stopped
-    command:
-      --default-authentication-plugin=mysql_native_password
-      --innodb_use_native_aio=0
-    ports:
-      - ${MYSQL_EXTERNAL_PORT}:3306
-    volumes:
-      - ./configs/mysql/my.cnf:/etc/my.cnf
-      - ./data/mysql-data:/var/lib/mysql
-      - ./data/mysql-backups:/mysql-backups
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
-      - MYSQL_USER_HOST=${MYSQL_USER_HOST}
-    networks:
-      crm_net:
-        ipv4_address: 10.5.0.5
+
