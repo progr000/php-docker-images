@@ -14,7 +14,9 @@ RUN if [ "$APP_ENVIRONMENT" = "development" ]; \
     fi
 
 #RUN apt-get update && apt-get install --fix-missing -y iptables
-RUN apt-get update && apt-get install --fix-missing -y socat
+RUN mkdir -p /var/run/mysqld \
+    && chown www-data:www-data /var/run/mysqld \
+    && apt-get update && apt-get install --fix-missing -y socat
 
 USER www-data
 
