@@ -1,0 +1,71 @@
+################### CONFIXX APACHE VHOSTS FILE ##########################
+# created at Time::tm=ARRAY(0x1d30830)
+#
+#            !!! Do not make any changes in this file !!!
+#
+# 1. We cannot guarantee that the software will work properly, if
+# the contents of this file are modified.
+# 2. This file would be rewritten each time the Confixx software requires
+# to update Apache configuration to bring user/domain settings in effect.
+#
+# If you need to have some custom content in this file, you can use
+# "httpd special" function in the Confixx Control Panel or create
+# an empty webX.lock file and edit webX.conf by the way you want in this
+# case Confixx will not touch the configuration file.
+#
+##########################################################################
+
+<Directory "/home/www/web7/html">
+  Options -FollowSymLinks -SymLinksIfOwnerMatch
+  php_admin_flag engine on
+</Directory>
+
+<VirtualHost 85.10.203.24:80>
+  ServerName wiki.hoststar.ch
+  ServerAlias www.wiki.hoststar.ch 
+  DocumentRoot /home/www/web7/html/hoststar_wiki
+  User web7
+  Group web7
+  ScriptAlias /cgi-bin/ /home/www/web7/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web7/html/:/home/www/web7/phptmp/:/home/www/web7/files/:/home/www/web7/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web7/phptmp/
+</VirtualHost>
+
+<VirtualHost 85.10.203.24:443>
+  ServerName web7.order.hoststar.ch
+  DocumentRoot /home/www/web7/html
+  User web7
+  Group web7
+  ScriptAlias /cgi-bin/ /home/www/web7/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web7/html/:/home/www/web7/phptmp/:/home/www/web7/files/:/home/www/web7/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web7/phptmp/
+  <IfModule mod_ssl.c>
+    SSLEngine on
+    SSLCertificateKeyFile /usr/local/apache/conf/ssl.key/admin.key
+    SSLCertificateFile /usr/local/apache/conf/ssl.crt/admin.crt
+    SetEnvIf User-Agent ".*MSIE.*" \
+      nokeepalive ssl-unclean-shutdown \
+      downgrade-1.0 force-response-1.0
+SSLCertificateChainFile /usr/local/apache/conf/ssl.crt/ca-admin.crt
+    <Files ~ "\.(cgi|shtml|phtml|php3?)$">
+      SSLOptions +StdEnvVars
+    </Files>
+    <Directory "/home/www/web7/html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+</VirtualHost>
+
+<VirtualHost 85.10.203.24:80>
+  ServerName web7.order.hoststar.ch
+  DocumentRoot /home/www/web7/html
+  User web7
+  Group web7
+  ScriptAlias /cgi-bin/ /home/www/web7/html/cgi-bin/
+  php_admin_value open_basedir /home/www/web7/html/:/home/www/web7/phptmp/:/home/www/web7/files/:/home/www/web7/atd/
+  php_admin_value file_uploads 1
+  php_admin_value upload_tmp_dir /home/www/web7/phptmp/
+</VirtualHost>
+

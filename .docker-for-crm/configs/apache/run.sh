@@ -20,5 +20,5 @@ socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=w
 #apache2ctl -DFOREGROUND
 
 rm -f /var/run/apache2/apache2.pid
-a2enmod rewrite
+#a2enmod rewrite
 exec apache2 -DFOREGROUND

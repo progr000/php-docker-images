@@ -14,9 +14,12 @@ RUN if [ "$APP_ENVIRONMENT" = "development" ]; \
     fi
 
 #RUN apt-get update && apt-get install --fix-missing -y iptables
-RUN mkdir -p /var/run/mysqld \
-    && chown www-data:www-data /var/run/mysqld \
-    && apt-get update && apt-get install --fix-missing -y socat
+RUN mkdir -p /var/run/mysqld && chown www-data:www-data /var/run/mysqld \
+    && mkdir -p /srv/www/cgi-bin && chown www-data:www-data /srv/www/cgi-bin \
+    && chown -R www-data:www-data /var/log \
+    && apt-get update && apt-get install --fix-missing -y  \
+      socat \
+      libapache2-mod-security2
 
 USER www-data
 

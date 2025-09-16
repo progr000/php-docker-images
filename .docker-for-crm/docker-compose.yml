@@ -27,7 +27,12 @@ services:
       - ./configs/php/php.ini:/etc/php5/apache2/php.ini
       - ./../app:/home/www
       - ./configs/apache/run.sh:/run.sh
-      - ./configs/apache/conf-5.3.29-init:/etc/apache2
+      #- ./configs/apache/conf-5.3.29-init:/etc/apache2
+      - ./configs/apache/conf-5.3.29-test:/etc/apache2
+      #- ./configs/apache/conf-5.3.29:/etc/apache2
+      - ./configs/apache/usr_sbin/apache2-systemd-ask-pass:/usr/sbin/apache2-systemd-ask-pass
+      - ./configs/apache/usr_share_apache2-mod_security2:/usr/share/apache2-mod_security2
+      - ./configs/apache/usr_local_apache2:/usr/local/apache2
     networks:
       crm_net:
         ipv4_address: 10.5.0.6
