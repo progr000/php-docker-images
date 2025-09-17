@@ -1,0 +1,89 @@
+
+###############################################
+[client]
+#password	= your_password
+port		= 3306
+socket      = /var/lib/mysql/mysql.sock
+default-character-set=utf8mb4
+
+###############################################
+[mysqld]
+port		= 3306
+socket      = /var/lib/mysql/mysql.sock
+# Change following line if you want to store your database elsewhere
+datadir=/var/lib/mysql
+skip-external-locking
+key_buffer_size = 64M
+max_allowed_packet = 16M
+table_open_cache = 256
+sort_buffer_size = 4M
+net_buffer_length = 32K
+read_buffer_size = 128K
+read_rnd_buffer_size = 2M
+myisam_sort_buffer_size = 32M
+thread_cache_size = 256
+tmp_table_size=1000M
+max_heap_table_size=1000M
+
+query_cache_size=300M
+query_cache_limit=40M
+
+interactive_timeout=1800
+wait_timeout=1800
+
+server-id	= 1
+
+#skip-host-cache
+#skip-name-resolve
+#secure-file-priv=/var/lib/mysql-files
+user=mysql
+#symbolic-links=0
+#log-error=/var/log/mysqld.log
+#pid-file=/var/run/mysqld/mysqld.pid
+
+#collation-server=utf8mb4_unicode_520_ci
+init-connect='SET NAMES utf8mb4'
+character-set-server=utf8mb4
+
+###############################################
+[safe_mysqld]
+log-error	= /var/log/mysqld.log
+socket      = /var/lib/mysql/mysql.sock
+
+
+###############################################
+[mysqldump]
+socket      = /var/lib/mysql/mysql.sock
+quick
+max_allowed_packet = 16M
+
+
+###############################################
+[mysql]
+no-auto-rehash
+default-character-set=utf8mb4
+#safe-updates
+
+
+###############################################
+[myisamchk]
+key_buffer_size = 20M
+sort_buffer_size = 20M
+read_buffer = 2M
+write_buffer = 2M
+
+
+###############################################
+[mysqlhotcopy]
+interactive-timeout
+
+
+###############################################
+[mysqld_multi]
+mysqld     = /usr/bin/mysqld_safe
+mysqladmin = /usr/bin/mysqladmin
+log        = /var/log/mysqld_multi.log
+# user       = multi_admin
+# password   = secret
+
+

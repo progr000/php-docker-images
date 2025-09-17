@@ -64,19 +64,38 @@ services:
     #  - net.ipv4.conf.all.route_localnet=1
     #  - net.ipv6.conf.lo.disable_ipv6=1
   ################################################
+#  crm-test-mysql:
+#    image: mysql/mysql-server:5.7.41
+#    container_name: crm-test-mysql
+#    restart: unless-stopped
+#    command:
+#      --default-authentication-plugin=mysql_native_password
+#      --innodb_use_native_aio=0
+#    ports:
+#      - ${MYSQL_EXTERNAL_PORT}:3306
+#    volumes:
+#      - ./configs/mysql/my-5.7.41.cnf:/etc/my.cnf
+#      - ./data/mysql-data-5.7.41:/var/lib/mysql
+#      - ./data/mysql-backups:/mysql-backups
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
+#      - MYSQL_USER=${MYSQL_USER}
+#      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+#      - MYSQL_USER_HOST=${MYSQL_USER_HOST}
+#    networks:
+#      crm_net:
+#        ipv4_address: 10.5.0.5
+  ################################################
   crm-test-mysql:
-    #image: mysql:8.0
-    image: mysql/mysql-server:5.7
+    image: mysql/mysql-server:5.5.62
     container_name: crm-test-mysql
     restart: unless-stopped
-    command:
-      --default-authentication-plugin=mysql_native_password
-      --innodb_use_native_aio=0
     ports:
       - ${MYSQL_EXTERNAL_PORT}:3306
     volumes:
-      - ./configs/mysql/my.cnf:/etc/my.cnf
-      - ./data/mysql-data:/var/lib/mysql
+      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf
+      - ./data/mysql-data-5.5.62:/var/lib/mysql
       - ./data/mysql-backups:/mysql-backups
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
