@@ -42,8 +42,10 @@ RUN echo "Installing all necessary packages" \
         pkg-config \
         re2c \
         apache2-bin apache2-dev apache2.2-common \
+        libapache2-mod-security2 \
         libxml2-dev \
         libzip-dev \
+        socat \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -151,19 +153,23 @@ RUN echo "Installing dev packages for extensions and extensions which we need" \
     && apt-get install -y --no-install-recommends --fix-missing libssl-dev \
     && docker-php-ext-install ftp
 
-# 12
+#12
+# Composer
+COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
+
+#13
 RUN echo "Creating preferences for php.ini" \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/manual-php-ext-charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/manual-php-ext-tz.ini \
     && echo "Info" \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
-#13
+#14
 WORKDIR /var/www/html
 
-#14
+#15
 USER www-data
 
-#15
+#16
 EXPOSE 80
 CMD ["apache2-foreground"]
