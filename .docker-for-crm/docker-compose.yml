@@ -65,7 +65,7 @@ services:
     #  - net.ipv6.conf.lo.disable_ipv6=1
   ################################################
 #  crm-test-mysql:
-#    image: mysql/mysql-server:5.7.41
+#    image: progr000/mysql-server-5.7.41
 #    container_name: crm-test-mysql
 #    restart: unless-stopped
 #    command:
@@ -88,7 +88,7 @@ services:
 #        ipv4_address: 10.5.0.5
   ################################################
   crm-test-mysql:
-    image: mysql/mysql-server:5.5.62
+    image: progr000/mysql-server-5.5.62
     container_name: crm-test-mysql
     restart: unless-stopped
     ports:
