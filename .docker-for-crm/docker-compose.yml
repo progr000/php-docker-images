@@ -3,7 +3,7 @@
 networks:
   crm_net:
     driver: bridge
-    enable_ipv6: false
+    #enable_ipv6: false
     ipam:
       config:
         - subnet: 10.5.0.0/16
