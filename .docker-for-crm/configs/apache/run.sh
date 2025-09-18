@@ -6,7 +6,7 @@ set -e
 # run socat for forwarding requests to socket file to remote-host-port
 #socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:10.5.0.5:3306 &
 #socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:crm-test-mysql:3306 &
-socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:localhost:$MYSQL_PORT &
+socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:$MYSQL_HOST_FOR_SOCAT:$MYSQL_PORT_FOR_SOCAT &
 
 #iptables -F -t nat
 #iptables -t nat -A OUTPUT -o lo -p tcp --dport 3306 -j DNAT --to-destination 10.5.0.5:3306
