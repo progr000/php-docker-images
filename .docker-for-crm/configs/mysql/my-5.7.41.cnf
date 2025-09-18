@@ -2,13 +2,13 @@
 ###############################################
 [client]
 #password	= your_password
-port		= 3306
+#port		= 9306
 socket      = /var/lib/mysql/mysql.sock
 default-character-set=utf8mb4
 
 ###############################################
 [mysqld]
-port		= 3306
+#port		= 9306
 socket      = /var/lib/mysql/mysql.sock
 # Change following line if you want to store your database elsewhere
 datadir=/var/lib/mysql
