@@ -5,7 +5,8 @@ set -e
 # https://stackoverflow.com/questions/75802175/is-there-a-way-to-use-localhost-with-mysqli-connect-and-force-tcp-connection
 # run socat for forwarding requests to socket file to remote-host-port
 #socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:10.5.0.5:3306 &
-socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:crm-test-mysql:3306 &
+#socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:crm-test-mysql:3306 &
+socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:$MYSQL_HOST_FOR_SOCAT:$MYSQL_PORT_FOR_SOCAT &
 
 #iptables -F -t nat
 #iptables -t nat -A OUTPUT -o lo -p tcp --dport 3306 -j DNAT --to-destination 10.5.0.5:3306
@@ -19,6 +20,7 @@ socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=w
 
 #exec /usr/sbin/apache2 -D FOREGROUND
 #apache2ctl -DFOREGROUND
+
 
 rm -f /var/run/apache2/apache2.pid
 #a2enmod rewrite

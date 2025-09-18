@@ -2,12 +2,12 @@
 docker build -f v4-all-libs.Dockerfile -t progr000/php-5.3.29-all-libs .
 docker run -it -p 280:80 --name crm-test-php53 progr000/php-5.3.29-all-libs
 docker push progr000/php-5.3.29-all-libs
-docker save -o /home/progr/php-5.3.29-all-libs.tar progr000/php-5.3.29-all-libs
+docker save -o /home/progr/docker-image___php-5.3.29-all-libs.tar progr000/php-5.3.29-all-libs
 
 docker build -f v3-for-crm.Dockerfile -t progr000/php-5.3.29-base-libs .
 docker run -it -p 280:80 --name crm-test-php53 progr000/php-5.3.29-base-libs
 docker push progr000/php-5.3.29-base-libs
-docker save -o /home/progr/php-5.3.29-base-libs.tar progr000/php-5.3.29-base-libs
+docker save -o /home/progr/docker-image___php-5.3.29-base-libs.tar progr000/php-5.3.29-base-libs
 ```
 
 Чтобы сохранить Docker-образ локально в виде tar-архива, используйте команду docker save, например: 
@@ -63,6 +63,13 @@ docker push your-username/my-image:latest
 ```
 
 
+Clear all images
 ```shell
 docker builder prune
 ```
+
+
+Docker HOST network:
+- https://forums.docker.com/t/getting-real-ip-inside-container/17337/7
+- https://stackoverflow.com/questions/62671411/docker-get-clients-ip-address-in-container
+

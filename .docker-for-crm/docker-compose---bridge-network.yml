@@ -12,17 +12,23 @@ networks:
 
 services:
   ################################################
-  crm-test-apache:
+  crm-apache:
     build:
       context: configs/apache/
       dockerfile: Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
-    container_name: crm-test-apache
+    container_name: crm-apache
     restart: unless-stopped
+    environment:
+      - APACHE_WEB_HOST_IP_LISTEN=${APACHE_WEB_HOST_IP_LISTEN}
+      - APACHE_HTTP_PORT=${APACHE_HTTP_PORT}
+      - APACHE_HTTPS_PORT=${APACHE_HTTPS_PORT}
+      - MYSQL_HOST_FOR_SOCAT=crm-mysql
+      - MYSQL_PORT_FOR_SOCAT=${MYSQL_PORT}
     ports:
-      - ${APACHE_EXTERNAL_HTTP_PORT}:80
-      - ${APACHE_EXTERNAL_HTTPS_PORT}:443
+      - ${APACHE_HTTP_PORT}:${APACHE_HTTP_PORT}
+      - ${APACHE_HTTPS_PORT}:${APACHE_HTTPS_PORT}
     volumes:
       - ./configs/php/php.ini:/etc/php5/apache2/php.ini
       - ./../app:/home/www
@@ -64,15 +70,42 @@ services:
     #  - net.ipv4.conf.all.route_localnet=1
     #  - net.ipv6.conf.lo.disable_ipv6=1
   ################################################
-#  crm-test-mysql:
+  crm-mysql:
+    build:
+      context: configs/mysql/
+      dockerfile: Dockerfile
+      args:
+        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+    container_name: crm-mysql
+    restart: unless-stopped
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    volumes:
+      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf
+      - ./data/mysql-data-5.5.62:/var/lib/mysql
+      - ./data/mysql-backups:/mysql-backups
+      - ./configs/mysql/run.sh:/run.sh
+    environment:
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+      - MYSQL_USER_HOST=${MYSQL_USER_HOST}
+    networks:
+      crm_net:
+        ipv4_address: 10.5.0.5
+
+  ################################################
+#  crm-mysql:
 #    image: progr000/mysql-server-5.7.41
-#    container_name: crm-test-mysql
+#    container_name: crm-mysql
 #    restart: unless-stopped
 #    command:
 #      --default-authentication-plugin=mysql_native_password
 #      --innodb_use_native_aio=0
 #    ports:
-#      - ${MYSQL_EXTERNAL_PORT}:3306
+#      - ${MYSQL_PORT}:${MYSQL_PORT}
 #    volumes:
 #      - ./configs/mysql/my-5.7.41.cnf:/etc/my.cnf
 #      - ./data/mysql-data-5.7.41:/var/lib/mysql
@@ -86,23 +119,3 @@ services:
 #    networks:
 #      crm_net:
 #        ipv4_address: 10.5.0.5
-  ################################################
-  crm-test-mysql:
-    image: progr000/mysql-server-5.5.62
-    container_name: crm-test-mysql
-    restart: unless-stopped
-    ports:
-      - ${MYSQL_EXTERNAL_PORT}:3306
-    volumes:
-      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf
-      - ./data/mysql-data-5.5.62:/var/lib/mysql
-      - ./data/mysql-backups:/mysql-backups
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
-      - MYSQL_USER_HOST=${MYSQL_USER_HOST}
-    networks:
-      crm_net:
-        ipv4_address: 10.5.0.5

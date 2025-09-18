@@ -1,0 +1,50 @@
+#version: '3.3'
+
+services:
+  ################################################
+  crm-apache:
+    build:
+      context: configs/apache/
+      dockerfile: Dockerfile
+      args:
+        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+    container_name: crm-apache
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - APACHE_WEB_HOST_IP_LISTEN=${APACHE_WEB_HOST_IP_LISTEN}
+      - APACHE_HTTP_PORT=${APACHE_HTTP_PORT}
+      - APACHE_HTTPS_PORT=${APACHE_HTTPS_PORT}
+      - MYSQL_HOST_FOR_SOCAT=localhost
+      - MYSQL_PORT_FOR_SOCAT=${MYSQL_PORT}
+    volumes:
+      - ./configs/php/php.ini:/etc/php5/apache2/php.ini
+      - ./../app:/home/www
+      - ./configs/apache/run.sh:/run.sh
+      #- ./configs/apache/___off/conf-init:/etc/apache2
+      - ./configs/apache/etc_apache2:/etc/apache2
+      - ./configs/apache/usr_sbin/apache2-systemd-ask-pass:/usr/sbin/apache2-systemd-ask-pass
+      - ./configs/apache/usr_share_apache2-mod_security2:/usr/share/apache2-mod_security2
+      - ./configs/apache/usr_local_apache2:/usr/local/apache2
+  ################################################
+  crm-mysql:
+    build:
+      context: configs/mysql/
+      dockerfile: Dockerfile
+      args:
+        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+    container_name: crm-mysql
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf
+      - ./data/mysql-data-5.5.62:/var/lib/mysql
+      - ./data/mysql-backups:/mysql-backups
+      - ./configs/mysql/run.sh:/run.sh
+    environment:
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+      - MYSQL_USER_HOST=${MYSQL_USER_HOST}
