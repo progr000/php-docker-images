@@ -5,7 +5,7 @@ services:
   crm-apache:
     build:
       context: configs/apache/
-      dockerfile: Dockerfile
+      dockerfile: compose.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-apache
@@ -20,7 +20,7 @@ services:
       - MYSQL_PORT_FOR_SOCAT=${MYSQL_PORT}
     volumes:
       - ./configs/php/php.ini:/etc/php5/apache2/php.ini
-      - ./../app:/home/www
+      - ./app:/home/www
       - ./configs/apache/run.sh:/run.sh
       #- ./configs/apache/___off/conf-init:/etc/apache2
       - ./configs/apache/etc_apache2:/etc/apache2
@@ -31,7 +31,7 @@ services:
   crm-mysql:
     build:
       context: configs/mysql/
-      dockerfile: Dockerfile
+      dockerfile: compose.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-mysql
