@@ -7,9 +7,9 @@ ENV OPENSSL_VERSION 1.0.2d
 ENV PHP_INI_DIR /etc/php5/apache2
 
 #7
-COPY docker-php-* /usr/local/bin/
+COPY bin/docker-php-* /usr/local/bin/
 #8
-COPY apache2-foreground /usr/local/bin/
+COPY bin/apache2-foreground /usr/local/bin/
 
 #9
 RUN <<EOF
@@ -57,9 +57,9 @@ RUN echo "Installing all necessary packages" \
 #11
 RUN echo "Small fix for freetype, need for php ./configure" \
     && mkdir /usr/include/freetype2/freetype \
-    && ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h \
-    \
-    && echo "Prepare environment for apache and php" \
+    && ln -s /usr/include/freetype2/freetype.h /usr/include/freetype2/freetype/freetype.h
+
+RUN echo "Prepare environment for apache and php" \
     && rm -rf /var/www/html  \
     && mkdir -p /var/lock/apache2 \
                 /var/run/apache2 \
@@ -70,9 +70,9 @@ RUN echo "Small fix for freetype, need for php ./configure" \
     && chown -R www-data:www-data /var/lock/apache2 /var/run/apache2 /var/log/apache2 /var/www/html /etc/apache2 /var/lib/apache2 \
     && chmod +x /usr/local/bin/apache2-foreground \
     && mkdir -p $PHP_INI_DIR/conf.d \
-    && chmos +x /usr/local/bin/docker-php-ext-* \
-    \
-    && echo "Apache + PHP requires preforking Apache for best results" \
+    && chmod +x /usr/local/bin/docker-php-ext-*
+
+RUN echo "Apache + PHP requires preforking Apache for best results" \
     && a2dismod mpm_event  \
     && a2enmod mpm_prefork \
     && mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.dist
@@ -94,9 +94,9 @@ RUN set -x \
     && tar -xzf openssl.tar.gz -C openssl --strip-components=1 \
     && rm openssl.tar.gz \
     && cd /usr/src/openssl \
-    && ./config -fPIC && make && make install \
-    \
-    && echo "Compiling php with all necessary extensions" \
+    && ./config -fPIC && make && make install
+
+RUN echo "Compiling php with all necessary extensions" \
     && mkdir -p /usr/src/php \
     && cd /usr/src \
     && curl -SL "http://php.net/get/php-$PHP_VERSION.tar.xz/from/this/mirror" -o php.tar.xz \
@@ -116,8 +116,11 @@ RUN set -x \
         --enable-json \
         --enable-mbstring \
         --with-mcrypt \
-        --with-mysql \
-        --with-mysqli \
+        #--with-mysql \
+        #--with-mysqli \
+        --with-mysql=mysqlnd \
+        --with-mysqli=mysqlnd \
+        --with-pdo-mysql=mysqlnd \
         --enable-mysqlnd \
         --with-pdo-mysql \
         --with-pdo-sqlite \
@@ -158,7 +161,9 @@ RUN set -x \
     && echo "Creating preferences for php.ini" \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/tz.ini \
-    && echo "extension=ssh2.so" > $PHP_INI_DIR/conf.d/ssh2.ini
+    && echo "extension=ssh2.so" > $PHP_INI_DIR/conf.d/ssh2.ini \
+    && echo "Info" \
+    && echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
 #--with-icu-dir=/usr \
 #--enable-intl \

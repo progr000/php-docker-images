@@ -153,6 +153,11 @@ RUN echo "Installing dev packages for extensions and extensions which we need" \
     && apt-get install -y --no-install-recommends --fix-missing libssl-dev \
     && docker-php-ext-install ftp
 
+# If you need myslnd (native driver instead, please user this before && docker-php-ext-install mysql mysqli pdo_mysql \)
+#    && docker-php-ext-configure mysql --with-mysql=mysqlnd \
+#    && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
+#    && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
+
 #12
 # Composer
 COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
