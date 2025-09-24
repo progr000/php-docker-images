@@ -73,3 +73,10 @@ Docker HOST network:
 - https://forums.docker.com/t/getting-real-ip-inside-container/17337/7
 - https://stackoverflow.com/questions/62671411/docker-get-clients-ip-address-in-container
 
+
+### Build docker for crm without docker-compose:
+1. You need start docker for mysql before with network = host (--net host)
+2. docker build -f build-apache-php.Dockerfile -t progr000/crm-test .
+3. docker rm ttt1
+4. docker run -it --net host --name ttt1 --env-file ./.env-for_build-apache-php.Dockerfile_.env progr000/crm-test
+ 
