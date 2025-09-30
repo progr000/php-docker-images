@@ -1,0 +1,79 @@
+variables:
+  TAG_REGEX_FOR_TEST: "/^v.*$/"
+  DEV_BRANCH: "ci-cd-v1"
+
+stages:
+  - build
+  - test
+  - deploy
+  - build-and-push-docker
+
+####################################
+build:
+  stage: build
+  tags:
+    - build-test-deploy
+  rules:
+    - if: '($CI_COMMIT_TAG && $CI_COMMIT_TAG =~ $TAG_REGEX_FOR_TEST) || ($CI_COMMIT_BRANCH == "master") || ($CI_COMMIT_BRANCH == $DEV_BRANCH)'
+  script:
+    - echo "build"
+
+####################################
+test:
+  stage: test
+  tags:
+    - build-test-deploy
+  rules:
+    - if: '($CI_COMMIT_TAG && $CI_COMMIT_TAG =~ $TAG_REGEX_FOR_TEST) || ($CI_COMMIT_BRANCH == "master") || ($CI_COMMIT_BRANCH == $DEV_BRANCH)'
+  needs: [build]
+  script:
+    - echo "test"
+
+####################################
+deploy-code:
+  stage: deploy
+  tags:
+    - build-test-deploy
+  rules:
+    - if: '($CI_COMMIT_TAG && $CI_COMMIT_TAG =~ $TAG_REGEX_FOR_TEST) || ($CI_COMMIT_BRANCH == "master") || ($CI_COMMIT_BRANCH == $DEV_BRANCH)'
+  needs: [build, test]
+#  only:
+#    refs: [master]
+  script:
+    - echo "deploy-code"
+
+####################################
+#prepare-docker-image:
+#  stage: build-and-push-docker
+#  tags:
+#    - docker-image-build
+#  rules:
+#    - if: '($CI_COMMIT_TAG && $CI_COMMIT_TAG =~ $TAG_REGEX_FOR_TEST) || ($CI_COMMIT_BRANCH == "master") || ($CI_COMMIT_BRANCH == $DEV_BRANCH)'
+#  needs: [build, test]
+#  image: docker:stable
+#  services:
+#    - docker:dind
+#  before_script:
+#    - echo "$DOCKER_HUB_PASSWORD" | docker login --username $DOCKER_HUB_LOGIN --password-stdin
+#    - cd ./.docker-for-crm/
+#  script:
+#    #- docker build -t ${DOCKER_ENV_CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} --build-arg branch=${CI_COMMIT_REF_NAME} .
+#    #- docker push ${DOCKER_ENV_CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+#    #- docker tag planner $DOCKER_HUB_USERNAME/planner:$CI_COMMIT_SHORT_SHA
+#    #- docker push $DOCKER_HUB_USERNAME/planner:$CI_COMMIT_SHORT_SHA
+#    #- docker build -f build-apache-php.Dockerfile -t ${DOCKER_HUB_USERNAME}/crm-apache-php:${CI_COMMIT_SHORT_SHA} .
+#    #- docker push ${DOCKER_HUB_USERNAME}/crm-apache-php:${CI_COMMIT_SHORT_SHA}
+#    #TAGS="-t $DOCKER_HUB_USERNAME/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA -t $DOCKER_HUB_USERNAME/$CI_PROJECT_NAME:$CI_COMMIT_REF_NAME"
+#    - |
+#      if [ "$CI_COMMIT_BRANCH" = "master" ]; then
+#        TAGS="$DOCKER_HUB_USERNAME/$CI_PROJECT_NAME:latest"
+#      fi
+#      if [ "$CI_COMMIT_BRANCH" != "" ]; then
+#        TAGS="$DOCKER_HUB_USERNAME/$CI_PROJECT_NAME:$CI_COMMIT_BRANCH"
+#      fi
+#      if [ $CI_COMMIT_TAG != "" ]; then
+#        TAGS="$DOCKER_HUB_USERNAME/$CI_PROJECT_NAME:$CI_COMMIT_TAG"
+#      fi
+#      docker build -f build-apache-php.Dockerfile -t $TAGS .
+#      docker push $TAGS
+#      echo "OK"
