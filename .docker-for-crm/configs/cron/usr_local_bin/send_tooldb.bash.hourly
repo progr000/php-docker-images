@@ -1,0 +1,44 @@
+#!/bin/bash
+# M. Balmer @ 28.06.2004
+# E. Nacht @ 19.07.2005
+set $(date)
+
+# rotate
+rm -rf /backup/hourly.3
+mv /backup/hourly.2 /backup/hourly.3
+mv /backup/hourly.1 /backup/hourly.2
+mv /backup/current /backup/hourly.1
+mkdir /backup/current
+
+mysqldump -u root --password='MN_tuxAPPS_$@2013' usr_web1_1 --ignore-table=usr_web1_1.tbl_premium_domain --ignore-table=usr_web1_1.jman_invoice --ignore-table=usr_web1_1.jman_domain >/backup/tmp/tooldb.ch.sql
+mysqldump -u root --password='MN_tuxAPPS_$@2013' usr_web8_1  >/backup/tmp/paydesk.ch.sql
+mysqldump -u root --password='MN_tuxAPPS_$@2013' usr_web1_1_at  >/backup/tmp/tooldb.at.sql
+mysqldump -u root --password='MN_tuxAPPS_$@2013' usr_web8_2  >/backup/tmp/paydesk.at.sql
+
+gzip /backup/tmp/tooldb.ch.sql
+gzip /backup/tmp/paydesk.ch.sql
+gzip /backup/tmp/tooldb.at.sql
+gzip /backup/tmp/paydesk.at.sql
+
+cp /backup/tmp/tooldb.ch.sql.gz /backup/current/tooldb.ch.sql.gz
+cp /backup/tmp/paydesk.ch.sql.gz /backup/current/paydesk.ch.sql.gz
+cp /backup/tmp/tooldb.at.sql.gz /backup/current/tooldb.at.sql.gz
+cp /backup/tmp/paydesk.at.sql.gz /backup/current/paydesk.at.sql.gz
+rm /backup/tmp/tooldb.ch.sql.gz
+rm /backup/tmp/paydesk.ch.sql.gz
+rm /backup/tmp/tooldb.at.sql.gz
+rm /backup/tmp/paydesk.at.sql.gz
+
+mkdir -p /backup/tmp/hoststar.ch/
+mkdir -p /backup/tmp/hoststar.at/
+
+rsync -avz --exclude="pdfs" /home/www/web1/html/ /backup/tmp/hoststartool.ch
+rsync -avz --exclude="pdfs" /home/www/web1_at/html/ /backup/tmp/hoststartool.at
+tar cvfz /backup/tmp/hoststartool.ch.tar.gz /backup/tmp/hoststartool.ch
+tar cvfz /backup/tmp/hoststartool.at.tar.gz /backup/tmp/hoststartool.at
+cp /backup/tmp/hoststartool.ch.tar.gz /backup/current/hoststartool.ch.tar.gz
+cp /backup/tmp/hoststartool.at.tar.gz /backup/current/hoststartool.at.tar.gz
+rm -rf /backup/tmp/hoststartool.ch
+rm -rf /backup/tmp/hoststartool.ch.tar.gz
+rm -rf /backup/tmp/hoststartool.at
+rm -rf /backup/tmp/hoststartool.at.tar.gz

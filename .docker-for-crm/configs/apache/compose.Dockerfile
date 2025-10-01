@@ -28,8 +28,15 @@ RUN rm /etc/php5/apache2/conf.d/docker-php-ext-mysql.ini \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
     && docker-php-ext-install mysql mysqli pdo_mysql
 
-# Cron
-RUN apt-get update && apt-get install --fix-missing -y cron
+# Cron tasks and all for this tasks
+RUN apt-get update && apt-get install --fix-missing -y \
+      cron \
+      mysql-client \
+      ntpdate \
+      logrotate \
+      xzdec \
+      rsync \
+    && ln -s /usr/local/bin/php /usr/bin/php
 
 #USER www-data
 
