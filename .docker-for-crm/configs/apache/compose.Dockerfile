@@ -37,8 +37,9 @@ RUN apt-get update && apt-get install --fix-missing -y \
       xzdec \
       rsync \
       wget \
-    && ln -s /usr/local/bin/php /usr/bin/php
+    && ln -s /usr/local/bin/php /usr/bin/php \
+    && ln -s /home/backup /backup
 
-#USER www-data
+USER www-data
 
 CMD ["/run.sh"]

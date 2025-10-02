@@ -34,7 +34,7 @@ services:
       - ./configs/cron/test.php:/cron-test/test.php:ro
       - ./configs/cron/root-crontab:/cron-test/root-crontab:ro
       - ./configs/cron/usr_local_bin:/usr/local/bin/cron:rw
-      - ./data/cron:/cron-test-out:rw
+      - ./data/cron/cron-test-out:/tmp/cron-test-out:rw
       - ./data/cron/home/mysql_backup:/home/mysql_backup:rw
       - ./data/cron/home/backup:/home/backup:rw
   ################################################

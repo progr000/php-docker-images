@@ -15,12 +15,13 @@ socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=w
 #cp /cron-test/root-crontab /var/spool/cron/crontabs/root
 #chown root:crontab /var/spool/cron/crontabs/root
 #chmod 0600 /var/spool/cron/crontabs/root
-chmod +x /usr/local/bin/cron/*
-cp /usr/local/bin/cron/* /usr/local/bin/
-ln -s /home/backup /backup
+
+#chmod +x /usr/local/bin/cron/*
+#cp /usr/local/bin/cron/* /usr/local/bin/
+#ln -s /home/backup /backup
 mkdir -p /home/backup/current /home/backup/tmp /home/backup/hourly.1 /home/backup/hourly.2 /home/backup/hourly.3
 mkdir -p /home/mysql_backup/current /home/mysql_backup/daily.1 /home/mysql_backup/daily.2 /home/mysql_backup/daily.3 /home/mysql_backup/daily.4 /home/mysql_backup/daily.5 /home/mysql_backup/daily.6
-cron -f &
+#cron -f &
 
 ##################
 ##  APACHE run  ##
