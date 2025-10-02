@@ -9,7 +9,7 @@ services:
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-apache
-    user: root
+    #user: root
     restart: ${RESTART_CONTAINERS}
     network_mode: host
     environment:

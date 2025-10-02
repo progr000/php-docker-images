@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install --fix-missing -y \
       logrotate \
       xzdec \
       rsync \
+      wget \
     && ln -s /usr/local/bin/php /usr/bin/php
 
 #USER www-data
