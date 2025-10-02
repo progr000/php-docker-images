@@ -4,10 +4,12 @@ services:
   ################################################
   crm-apache:
     build:
-      context: configs/apache/
-      dockerfile: compose.Dockerfile
+      context: configs/
+      dockerfile: apache.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+        - APACHE_UID=${APACHE_UID}
+        - APACHE_GID=${APACHE_GID}
     container_name: crm-apache
     #user: root
     restart: ${RESTART_CONTAINERS}
@@ -32,16 +34,14 @@ services:
       - ./configs/logrotate/logrotate.conf:/etc/logrotate.conf:ro
       - ./configs/logrotate/logrotate.d:/etc/logrotate.d:ro
       - ./configs/cron/test.php:/cron-test/test.php:ro
-      - ./configs/cron/root-crontab:/cron-test/root-crontab:ro
-      - ./configs/cron/usr_local_bin:/usr/local/bin/cron:rw
       - ./data/cron/cron-test-out:/tmp/cron-test-out:rw
       - ./data/cron/home/mysql_backup:/home/mysql_backup:rw
       - ./data/cron/home/backup:/home/backup:rw
   ################################################
   crm-mysql:
     build:
-      context: configs/mysql/
-      dockerfile: compose.Dockerfile
+      context: configs/
+      dockerfile: mysql.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-mysql
@@ -67,8 +67,8 @@ services:
     #stdin_open: true
     #tty: true
     build:
-      context: configs/runner/
-      dockerfile: compose.Dockerfile
+      context: configs/
+      dockerfile: gitlab-runner.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-runner

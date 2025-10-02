@@ -10,6 +10,21 @@ RUN if [ "$APP_ENVIRONMENT" = "development" ]; \
     then apt-get update && apt-get install --fix-missing -y procps iputils-ping net-tools telnet nano mc aptitude; \
     fi
 
+# Init www-data user
+ARG APACHE_UID
+ARG APACHE_GID
+RUN userdel www-data \
+    && groupdel www-data || true \
+    && groupadd -g ${APACHE_GID} www-data \
+    && useradd -M -g www-data -u ${APACHE_UID} -d /var/www -s /usr/sbin/nologin www-data \
+    && chown -R www-data:www-data /var/cache/apache2 \
+                                  /var/log/apache2 \
+                                  /run/apache2 \
+                                  /run/lock/apache2 \
+                                  /var/lib/apache2 \
+                                  /var/cache/modsecurity \
+                                  /var/www/html
+
 #RUN apt-get update && apt-get install --fix-missing -y iptables
 RUN mkdir -p /var/run/mysqld && chown www-data:www-data /var/run/mysqld \
     && mkdir -p /srv/www/cgi-bin && chown www-data:www-data /srv/www/cgi-bin \
@@ -40,6 +55,16 @@ RUN apt-get update && apt-get install --fix-missing -y \
     && ln -s /usr/local/bin/php /usr/bin/php \
     && ln -s /home/backup /backup
 
+
+COPY cron/usr_local_bin/* /usr/local/bin
+COPY cron/root-crontab.local /var/spool/cron/crontabs/www-data
+RUN chown www-data:crontab /var/spool/cron/crontabs/www-data \
+    && chmod 0600 /var/spool/cron/crontabs/www-data \
+    && chmod gu+s /usr/sbin/cron
+    #&& chmod gu+rw /run
+
+#
 USER www-data
 
+#
 CMD ["/run.sh"]
