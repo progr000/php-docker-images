@@ -37,6 +37,8 @@ services:
       - ./data/cron/cron-test-out:/tmp/cron-test-out:rw
       - ./data/cron/home/mysql_backup:/home/mysql_backup:rw
       - ./data/cron/home/backup:/home/backup:rw
+      ### FOR MSMTP (mail)
+      - ./configs/msmtp/msmtprc:/etc/msmtprc:ro
   ################################################
   crm-mysql:
     build:
@@ -63,29 +65,42 @@ services:
       - ./data/mysql-data-5.5.62:/var/lib/mysql:rw
       - ./data/mysql-backups:/mysql-backups:rw
   ################################################
-  crm-runner:
-    #stdin_open: true
-    #tty: true
-    build:
-      context: configs/
-      dockerfile: gitlab-runner.Dockerfile
-      args:
-        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
-    container_name: crm-runner
+  mailhog:
+    image: 'mailhog/mailhog:latest'
+    container_name: crm-mailhog
     restart: ${RESTART_CONTAINERS}
-    #network_mode: host
-    #cap_add:
-    #  - NET_ADMIN
-    #  - ALL
-    #sysctls:
-    #  - net.ipv4.ip_forward=1
-    #  - net.ipv4.conf.all.route_localnet=1
-    #  - net.ipv6.conf.lo.disable_ipv6=1
-    environment:
-      - TZ=${TZ}
-      - RUNNER_ID=${GITLAB_RUNNER_ID}
-      - RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
     volumes:
-      - ./configs/runner/config.toml-example:/home/gitlab-runner/config.toml-example:ro
-      - ./data/gitlab-runner:/home/gitlab-runner/.gitlab-runner:rw
-      - ./configs/runner/run.sh:/run.sh:ro
+      - ./data/mailhog-mailbox:/home/mailhog:rw
+    environment:
+      - MH_MAILDIR_PATH=/home/mailhog
+      - MH_STORAGE=maildir
+    ports:
+      - "1025:1025" # SMTP-port
+      - "8025:8025"
+  ################################################
+#  crm-runner:
+#    #stdin_open: true
+#    #tty: true
+#    build:
+#      context: configs/
+#      dockerfile: gitlab-runner.Dockerfile
+#      args:
+#        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+#    container_name: crm-runner
+#    restart: ${RESTART_CONTAINERS}
+#    #network_mode: host
+#    #cap_add:
+#    #  - NET_ADMIN
+#    #  - ALL
+#    #sysctls:
+#    #  - net.ipv4.ip_forward=1
+#    #  - net.ipv4.conf.all.route_localnet=1
+#    #  - net.ipv6.conf.lo.disable_ipv6=1
+#    environment:
+#      - TZ=${TZ}
+#      - RUNNER_ID=${GITLAB_RUNNER_ID}
+#      - RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+#    volumes:
+#      - ./configs/runner/config.toml-example:/home/gitlab-runner/config.toml-example:ro
+#      - ./data/gitlab-runner:/home/gitlab-runner/.gitlab-runner:rw
+#      - ./configs/runner/run.sh:/run.sh:ro

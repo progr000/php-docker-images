@@ -52,6 +52,7 @@ RUN apt-get update && apt-get install --fix-missing -y \
       xzdec \
       rsync \
       wget \
+      msmtp \
     && ln -s /usr/local/bin/php /usr/bin/php \
     && ln -s /home/backup /backup
 
@@ -63,8 +64,8 @@ RUN chown www-data:crontab /var/spool/cron/crontabs/www-data \
     && chmod gu+s /usr/sbin/cron
     #&& chmod gu+rw /run
 
-#
-USER www-data
+# uncomment this on real server
+#USER www-data
 
 #
 CMD ["/run.sh"]
