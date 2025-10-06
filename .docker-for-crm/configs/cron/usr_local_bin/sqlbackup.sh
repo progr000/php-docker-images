@@ -3,7 +3,7 @@
 # Bereinigte Liste der Datenbanken erzeugen
 # "geheim" ist das MySQL-Rootpasswort:
 DBASELIST=`mktemp`
-/usr/bin/mysqlshow -pMN_tuxAPPS_$\@2013 | awk '{print $2}' | grep -v Databases | sort >$DBASELIST
+/usr/bin/mysqlshow -u root -pMN_tuxAPPS_$\@2013 | awk '{print $2}' | grep -v Databases | sort >$DBASELIST
 # Wohin sollen die ganzen Backups geschrieben werden?
 cd /home/mysql_backup/
 rm -rf daily.6
@@ -17,7 +17,7 @@ mkdir -p current
 cd current
 for x in `cat $DBASELIST`; do
 #echo "Datenbank: $x sichern";
-mysqldump --single-transaction --opt -pMN_tuxAPPS_$\@2013 $x >$x.sql;
+mysqldump --single-transaction --opt -u root -pMN_tuxAPPS_$\@2013 $x >$x.sql;
 done;
 #echo "Alte .gz-Dateien loeschen:"
 #rm *.gz

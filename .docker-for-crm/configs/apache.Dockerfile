@@ -61,7 +61,8 @@ COPY cron/usr_local_bin/* /usr/local/bin
 COPY cron/root-crontab.local /var/spool/cron/crontabs/www-data
 RUN chown www-data:crontab /var/spool/cron/crontabs/www-data \
     && chmod 0600 /var/spool/cron/crontabs/www-data \
-    && chmod gu+s /usr/sbin/cron
+    && chmod gu+s /usr/sbin/cron \
+    && chmod gu+s /usr/sbin/logrotate
     #&& chmod gu+rw /run
 
 # uncomment this on real server

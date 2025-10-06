@@ -27,6 +27,7 @@ services:
       - ./app:/home/www:rw
       #- ./configs/apache/___off/conf-init:/etc/apache2
       - ./configs/apache/etc_apache2:/etc/apache2:ro
+      - ./configs/apache/etc_init.d/apache2:/etc/init.d/apache2:ro
       - ./configs/apache/usr_sbin/apache2-systemd-ask-pass:/usr/sbin/apache2-systemd-ask-pass:ro
       - ./configs/apache/usr_share_apache2-mod_security2:/usr/share/apache2-mod_security2:ro
       - ./configs/apache/usr_local_apache2:/usr/local/apache2:ro
