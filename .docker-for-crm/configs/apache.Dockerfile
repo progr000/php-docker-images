@@ -28,7 +28,8 @@ RUN userdel www-data \
 #RUN apt-get update && apt-get install --fix-missing -y iptables
 RUN mkdir -p /var/run/mysqld && chown www-data:www-data /var/run/mysqld \
     && mkdir -p /srv/www/cgi-bin && chown www-data:www-data /srv/www/cgi-bin \
-    && chown -R www-data:www-data /var/log
+    && chown -R www-data:www-data /var/log \
+    && chown -R www-data:www-data /var/www
 
 # Reinstall mysql libs to use mysqlnd driver
 RUN rm /etc/php5/apache2/conf.d/docker-php-ext-mysql.ini \
@@ -53,6 +54,7 @@ RUN apt-get update && apt-get install --fix-missing -y \
       rsync \
       wget \
       msmtp \
+      openssh-client \
     && ln -s /usr/local/bin/php /usr/bin/php \
     && ln -s /home/backup /backup
 
@@ -66,7 +68,7 @@ RUN chown www-data:crontab /var/spool/cron/crontabs/www-data \
     #&& chmod gu+rw /run
 
 # uncomment this on real server
-#USER www-data
+USER www-data
 
 #
 CMD ["/run.sh"]

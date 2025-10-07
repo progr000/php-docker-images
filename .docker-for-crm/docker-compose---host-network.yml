@@ -38,6 +38,8 @@ services:
       - ./data/cron/cron-test-out:/tmp/cron-test-out:rw
       - ./data/cron/home/mysql_backup:/home/mysql_backup:rw
       - ./data/cron/home/backup:/home/backup:rw
+      - ./data/cron/home/old_logs:/home/old_logs:rw
+      - ./data/cron/ssh-keys:/var/www/.ssh:ro
       ### FOR MSMTP (mail)
       - ./configs/msmtp/msmtprc:/etc/msmtprc:ro
   ################################################
