@@ -108,7 +108,7 @@ RUN set -x \
 # --with-openssl - required for another extensions
 # --with-zlib  - required for another extensions
 
-# 10
+#10
 # Prepare ssh2 extention for php
 RUN set -x \
     && echo "Prepare ssh2 extention for php" \
@@ -117,6 +117,13 @@ RUN set -x \
 # && echo "extension=ssh2.so" > $PHP_INI_DIR/conf.d/ssh2.ini
 
 #11
+# Prepare memcached extention for php
+RUN set -x \
+    && echo "Prepare ssh2 extention for php" \
+    && mkdir -p /usr/src/php/ext/memcached \
+    && tar -xzf /tmp/memcached_2.1.0.orig.tar.gz -C /usr/src/php/ext/memcached --strip-components=1
+
+#12
 # Installing extensions
 RUN echo "Installing dev packages for extensions and extensions which we need" \
     && apt-get update \
@@ -136,6 +143,7 @@ RUN echo "Installing dev packages for extensions and extensions which we need" \
       librecode-dev \
       libtidy-dev \
       libsnmp-dev \
+      libmemcached-dev \
     \
     && echo "Fix for freetype lib" \
     && mkdir /usr/include/freetype2/freetype \
@@ -158,21 +166,36 @@ RUN echo "Installing dev packages for extensions and extensions which we need" \
                               pdo pdo_dblib pdo_firebird pdo_mysql pdo_pgsql pdo_sqlite  \
                               pgsql phar posix pspell readline recode session shmop simplexml snmp soap  \
                               sockets sqlite ssh2 sysvmsg sysvsem sysvshm tidy  \
-                              tokenizer wddx xml xmlreader xmlrpc xmlwriter xsl zip
+                              tokenizer wddx xml xmlreader xmlrpc xmlwriter xsl zip memcached
 
 #   -- oci8 odbc pdo_odbc pdo_oci sybase_ct (at the moment failed with compiling)
 #   -- standard reflection spl # don't need to compiling and install (installed by default)
 
-#12
+#13
 # Composer
 COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
 
-#13
+#14
 RUN echo "Creating preferences for php.ini" \
+    && echo "extension=memcached.so" > $PHP_INI_DIR/conf.d/memcached.ini \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/manual-php-ext-charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/manual-php-ext-tz.ini \
     && echo "Info" \
     && echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+
+#RUN docker-php-ext-install memcache
+#RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing libmemcached-dev \
+#    set -x \
+#    && echo "Compiling memcached" \
+#    && CFLAGS="-fPIC" \
+#    && mkdir -p /usr/src/memcached \
+#    && tar -xzf /tmp/memcached_2.1.0.orig.tar.gz -C /usr/src/memcached --strip-components=1 \
+#    && cd /usr/src/memcached \
+#    && phpize
+#RUN ./configure --with-php-config=/usr/local/bin/php-config \
+#    && make && make test && make install && make clean \
+#    && echo "extension=memcached.so" > $PHP_INI_DIR/conf.d/memcached.ini
+
 
 #14
 WORKDIR /var/www/html
