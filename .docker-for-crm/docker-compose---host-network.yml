@@ -4,48 +4,106 @@ services:
   ################################################
   crm-apache:
     build:
-      context: configs/apache/
-      dockerfile: compose.Dockerfile
+      context: configs/
+      dockerfile: apache.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+        - APACHE_UID=${APACHE_UID}
+        - APACHE_GID=${APACHE_GID}
     container_name: crm-apache
-    user: root
+    #user: root
+    restart: ${RESTART_CONTAINERS}
     network_mode: host
-    restart: unless-stopped
     environment:
+      - TZ=${TZ}
       - APACHE_WEB_HOST_IP_LISTEN=${APACHE_WEB_HOST_IP_LISTEN}
       - APACHE_HTTP_PORT=${APACHE_HTTP_PORT}
       - APACHE_HTTPS_PORT=${APACHE_HTTPS_PORT}
       - MYSQL_HOST_FOR_SOCAT=localhost
       - MYSQL_PORT_FOR_SOCAT=${MYSQL_PORT}
     volumes:
-      - ./configs/php/php.ini:/etc/php5/apache2/php.ini
-      - ./app:/home/www
-      - ./configs/apache/run.sh:/run.sh
+      - ./configs/apache/run.sh:/run.sh:ro
+      - ./configs/php/php.ini:/etc/php5/apache2/php.ini:ro
+      - ./app:/home/www:rw
       #- ./configs/apache/___off/conf-init:/etc/apache2
-      - ./configs/apache/etc_apache2:/etc/apache2
-      - ./configs/apache/usr_sbin/apache2-systemd-ask-pass:/usr/sbin/apache2-systemd-ask-pass
-      - ./configs/apache/usr_share_apache2-mod_security2:/usr/share/apache2-mod_security2
-      - ./configs/apache/usr_local_apache2:/usr/local/apache2
+      - ./configs/apache/etc_apache2:/etc/apache2:ro
+      - ./configs/apache/etc_init.d/apache2:/etc/init.d/apache2:ro
+      - ./configs/apache/usr_sbin/apache2-systemd-ask-pass:/usr/sbin/apache2-systemd-ask-pass:ro
+      - ./configs/apache/usr_share_apache2-mod_security2:/usr/share/apache2-mod_security2:ro
+      - ./configs/apache/usr_local_apache2:/usr/local/apache2:ro
+      ### FOR CRON
+      - ./configs/logrotate/logrotate.conf:/etc/logrotate.conf:ro
+      - ./configs/logrotate/logrotate.d:/etc/logrotate.d:ro
+      - ./configs/cron/test.php:/cron-test/test.php:ro
+      - ./data/cron/cron-test-out:/tmp/cron-test-out:rw
+      - ./data/cron/home/mysql_backup:/home/mysql_backup:rw
+      - ./data/cron/home/backup:/home/backup:rw
+      - ./data/cron/home/old_logs:/home/old_logs:rw
+      - ./data/cron/ssh-keys:/var/www/.ssh:ro
+      ### FOR MSMTP (mail)
+      - ./configs/msmtp/msmtprc:/etc/msmtprc:ro
   ################################################
   crm-mysql:
     build:
-      context: configs/mysql/
-      dockerfile: compose.Dockerfile
+      context: configs/
+      dockerfile: mysql.Dockerfile
       args:
         - APP_ENVIRONMENT=${APP_ENVIRONMENT}
     container_name: crm-mysql
+    restart: ${RESTART_CONTAINERS}
     network_mode: host
-    restart: unless-stopped
-    volumes:
-      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf
-      - ./data/mysql-data-5.5.62:/var/lib/mysql
-      - ./data/mysql-backups:/mysql-backups
-      - ./configs/mysql/run.sh:/run.sh
+    #ports:
+    #  - ${MYSQL_PORT}:${MYSQL_PORT}
     environment:
+      - TZ=${TZ}
       - MYSQL_PORT=${MYSQL_PORT}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
       - MYSQL_USER_HOST=${MYSQL_USER_HOST}
+    volumes:
+      - ./configs/mysql/run.sh:/run.sh:ro
+      - ./configs/mysql/my-5.5.62.cnf:/etc/my.cnf:ro
+      - ./data/mysql-data-5.5.62:/var/lib/mysql:rw
+      - ./data/mysql-backups:/mysql-backups:rw
+  ################################################
+  mailhog:
+    image: 'mailhog/mailhog:latest'
+    container_name: crm-mailhog
+    restart: ${RESTART_CONTAINERS}
+    volumes:
+      - ./data/mailhog-mailbox:/home/mailhog:rw
+    environment:
+      - MH_MAILDIR_PATH=/home/mailhog
+      - MH_STORAGE=maildir
+    ports:
+      - "1025:1025" # SMTP-port
+      - "8025:8025"
+  ################################################
+#  crm-runner:
+#    #stdin_open: true
+#    #tty: true
+#    build:
+#      context: configs/
+#      dockerfile: gitlab-runner.Dockerfile
+#      args:
+#        - APP_ENVIRONMENT=${APP_ENVIRONMENT}
+#    container_name: crm-runner
+#    restart: ${RESTART_CONTAINERS}
+#    #network_mode: host
+#    #cap_add:
+#    #  - NET_ADMIN
+#    #  - ALL
+#    #sysctls:
+#    #  - net.ipv4.ip_forward=1
+#    #  - net.ipv4.conf.all.route_localnet=1
+#    #  - net.ipv6.conf.lo.disable_ipv6=1
+#    environment:
+#      - TZ=${TZ}
+#      - RUNNER_ID=${GITLAB_RUNNER_ID}
+#      - RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+#    volumes:
+#      - ./configs/runner/config.toml-example:/home/gitlab-runner/config.toml-example:ro
+#      - ./data/gitlab-runner:/home/gitlab-runner/.gitlab-runner:rw
+#      - ./configs/runner/run.sh:/run.sh:ro

@@ -2,12 +2,23 @@
 
 set -e
 
-##############################################################
-##  $MYSQL_HOST_FOR_SOCAT, $MYSQL_PORT_FOR_SOCAT            ##
-##  should be determined in .env file or docker-compose.yml ##
-##############################################################
+##################################################################
+##  Fix for mysql was available via socket in apache-container  ##
+##  $MYSQL_HOST_FOR_SOCAT, $MYSQL_PORT_FOR_SOCAT                ##
+##  should be determined in .env file or docker-compose.yml     ##
+##################################################################
 socat UNIX-LISTEN:/var/run/mysqld/mysqld.sock,fork,reuseaddr,unlink-early,user=www-data,group=www-data,mode=777 TCP:$MYSQL_HOST_FOR_SOCAT:$MYSQL_PORT_FOR_SOCAT &
 
+##########################
+##  CRON setup and run  ##
+##########################
+mkdir -p /home/backup/current /home/backup/tmp /home/backup/hourly.1 /home/backup/hourly.2 /home/backup/hourly.3 || true
+mkdir -p /home/mysql_backup/current /home/mysql_backup/daily.1 /home/mysql_backup/daily.2 /home/mysql_backup/daily.3 /home/mysql_backup/daily.4 /home/mysql_backup/daily.5 /home/mysql_backup/daily.6 || true
+/usr/sbin/cron -f &
+
+##################
+##  APACHE run  ##
+##################
 rm -f /var/run/apache2/apache2.pid
 exec apache2 -DFOREGROUND
 

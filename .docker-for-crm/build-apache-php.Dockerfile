@@ -3,6 +3,9 @@ FROM progr000/php-5.3.29-base-libs
 
 USER root
 
+ARG branch
+ENV GIT_BRANCH ${branch}
+
 # Reinstall mysql libs to use mysqlnd driver
 RUN rm /etc/php5/apache2/conf.d/docker-php-ext-mysql.ini \
     /etc/php5/apache2/conf.d/docker-php-ext-mysqli.ini \
@@ -29,7 +32,7 @@ COPY configs/apache/etc_apache2/ /etc/apache2
 COPY configs/apache/usr_sbin/apache2-systemd-ask-pass /usr/sbin/apache2-systemd-ask-pass
 COPY configs/apache/usr_share_apache2-mod_security2/ /usr/share/apache2-mod_security2
 COPY configs/apache/usr_local_apache2/ /usr/local/apache2
-COPY app/ /home/www
+#COPY app/ /home/www
 
 #USER www-data
 
