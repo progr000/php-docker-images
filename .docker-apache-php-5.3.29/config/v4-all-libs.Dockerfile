@@ -196,13 +196,33 @@ RUN echo "Creating preferences for php.ini" \
 #    && make && make test && make install && make clean \
 #    && echo "extension=memcached.so" > $PHP_INI_DIR/conf.d/memcached.ini
 
-
-#14
-WORKDIR /var/www/html
-
-#15
-USER www-data
+#15 Installing php-fpm also, and then can switch which run apache or fpm in CMD [] \
+RUN cd /usr/src/php \
+    && make clean \
+    && ./configure \
+        --with-config-file-path="$PHP_INI_DIR" \
+        --with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
+        --with-openssl=/usr/local/ssl \
+        --with-mhash  \
+        --enable-mysqlnd  \
+        --with-zlib \
+        --enable-fpm \
+        --with-fpm-user=www-data  \
+        --with-fpm-group=www-data \
+    && make -j"$(nproc)" && make install && make clean
 
 #16
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
+
+#17
+WORKDIR /var/www/html
+
+#18
+USER www-data
+
+#19
 EXPOSE 80
 CMD ["apache2-foreground"]
+
+#EXPOSE 9000
+#CMD ["php-fpm"]
