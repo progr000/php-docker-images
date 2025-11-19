@@ -46,6 +46,7 @@ RUN echo "Installing all necessary packages" \
         libxml2-dev \
         libzip-dev \
         socat \
+        unzip \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -177,7 +178,6 @@ COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
 
 #14
 RUN echo "Creating preferences for php.ini" \
-    && echo "extension=memcached.so" > $PHP_INI_DIR/conf.d/memcached.ini \
     && echo "default_charset = " > $PHP_INI_DIR/conf.d/manual-php-ext-charset.ini \
     && echo "date.timezone = Europe/Zurich" > $PHP_INI_DIR/conf.d/manual-php-ext-tz.ini \
     && echo "Info" \
